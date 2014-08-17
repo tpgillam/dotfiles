@@ -1,3 +1,4 @@
+# vim: filetype=gitconfig :
 [user]
   email = tpgillam@googlemail.com
   name = Thomas Gillam
@@ -8,4 +9,4 @@
 [push]
   default = matching
 [core]
-  excludesfile = /Users/thomas/.gitignore_global
+  excludesfile = .gitignore_global

@@ -17,6 +17,11 @@ set expandtab
 set cindent
 set autoindent
 set mouse=a
+" Fix lines starting with # not indenting properly
+set cinkeys-=0#
+set t_kb= 			" Fix backspace key on ssh connections
+" Allow backspace to delete characters
+set backspace=2
 set spelllang=en_gb
 filetype on
 filetype indent on
@@ -90,8 +95,12 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'Rip-Rip/clang_complete'
 " Bundle 'davidhalter/jedi-vim'
 Bundle 'ervandew/supertab'
+Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
 filetype plugin indent on
+
+" Default to light background
+set background=light
 
 " Gundo toggling
 nnoremap <F5> :GundoToggle<CR>
@@ -110,10 +119,16 @@ autocmd FileType cmake set commentstring=#\ %s
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
 
 " Setup for clang_complete
-let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-let g:clang_library_file = "libclang.dylib"
-let g:clang_use_library = 1
+if has('mac')
+  let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+  let g:clang_library_file = "libclang.dylib"
+elseif $HOSTNAME == "heffalump"
+elseif has('unix')
+  let g:clang_library_path = "/usera/gillam/utils/clangStuff/build/Release+Asserts/lib/"
+  let g:clang_library_file = "libclang.so"
+endif
 let b:clang_user_options = '-std=c++11'
+let g:clang_use_library = 1
 let g:clang_close_preview = 1
 " let g:clang_complete_copen = 1
 " let g:clang_periodic_quickfix = 1
