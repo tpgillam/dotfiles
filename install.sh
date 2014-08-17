@@ -1,4 +1,5 @@
-#!/bin/bash # vim: sw=4 ts=4 :
+#!/bin/bash 
+# vim: sw=4 ts=4 :
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
