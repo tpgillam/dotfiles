@@ -144,6 +144,11 @@ let g:clang_complete_auto = 1
 " " The single one that works with clang_complete
 " let g:clang_snippets_engine='clang_complete'
 
+" Set clang-format binary
+if has('mac')
+  let g:clang_format#command = 'clang-format-mp-3.6'
+endif
+
 " Complete options (disable preview scratch window, longest removed to aways
 " show menu)
 set completeopt=menu,menuone
