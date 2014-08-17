@@ -1,0 +1,6 @@
+SSH config
+
+* Support config files, don't overwrite public/private keys
+* Ignore known hosts
+* Need different configs for different machines, with some parts shared
+
