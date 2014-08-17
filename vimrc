@@ -74,9 +74,9 @@ let g:changelog_username = "Thomas Gillam  <gillam@hep.phy.cam.ac.uk>"
 
 " Experimental Vundle support!
 filetype off
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'evandrewry/vim-x10'
 Bundle 'sjl/gundo.vim'
 Bundle 'airblade/vim-gitgutter'
