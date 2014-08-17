@@ -1,0 +1,11 @@
+# Vim stuff
+*.swp
+*~
+
+# OS X stuff
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Thumbnails
+._*

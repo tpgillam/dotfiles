@@ -1,0 +1,11 @@
+[user]
+  email = tpgillam@googlemail.com
+  name = Thomas Gillam
+[color]
+  ui = true
+[merge]
+  tool = vimdiff
+[push]
+  default = matching
+[core]
+  excludesfile = /Users/thomas/.gitignore_global
