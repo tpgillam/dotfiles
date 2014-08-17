@@ -119,14 +119,17 @@ autocmd FileType cmake set commentstring=#\ %s
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
 
 " Setup for clang_complete
+" Clang library file has to have correct name (on Ubuntu needed to create
+" symlink libclang.so -> libclang.so.1)
+let hostname = substitute(system('hostname'), '\n', '', '')
 if has('mac')
-  let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-  let g:clang_library_file = "libclang.dylib"
-elseif $HOSTNAME == "heffalump"
+  let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+elseif hostname == "heffalump"
+  let g:clang_library_path = "/usr/lib/x86_64-linux-gnu"
 elseif has('unix')
-  let g:clang_library_path = "/usera/gillam/utils/clangStuff/build/Release+Asserts/lib/"
-  let g:clang_library_file = "libclang.so"
+  let g:clang_library_path = "/usera/gillam/utils/clangStuff/build/Release+Asserts/lib"
 endif
+
 let b:clang_user_options = '-std=c++11'
 let g:clang_use_library = 1
 let g:clang_close_preview = 1
@@ -147,6 +150,8 @@ let g:clang_complete_auto = 1
 " Set clang-format binary
 if has('mac')
   let g:clang_format#command = 'clang-format-mp-3.6'
+elseif hostname == 'heffalump'
+  let g:clang_format#command = 'clang-format-3.5'
 endif
 
 " Complete options (disable preview scratch window, longest removed to aways
