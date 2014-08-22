@@ -12,11 +12,12 @@ set modelines=1
 " Tabs are ugly
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 set cindent
 set autoindent
-set mouse=a
+" set mouse=a
 " Fix lines starting with # not indenting properly
 set cinkeys-=0#
 set t_kb= 			" Fix backspace key on ssh connections
@@ -106,7 +107,7 @@ set background=light
 nnoremap <F5> :GundoToggle<CR>
 
 " Ensure python tabbing behaves how I want it to
-autocmd FileType python setlocal ts=2 sw=2 sts=0 et
+autocmd FileType python setlocal ts=4 sw=4 sts=4 et
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Adapt commentary to use "//" for C++ comments
