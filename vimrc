@@ -101,7 +101,7 @@ Bundle 'groenewege/vim-less'
 filetype plugin indent on
 
 " Default to light background
-set background=light
+set background=dark
 
 " Gundo toggling
 nnoremap <F5> :GundoToggle<CR>
