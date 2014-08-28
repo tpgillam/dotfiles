@@ -98,6 +98,7 @@ Bundle 'Rip-Rip/clang_complete'
 Bundle 'ervandew/supertab'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
+Bundle 'Keithbsmiley/tmux.vim'
 filetype plugin indent on
 
 " Default to light background
