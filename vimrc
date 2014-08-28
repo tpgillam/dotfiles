@@ -48,7 +48,7 @@ set number " Show line numbers - Hmmmm...
 " Automatic wrapping at 80 characters. Horrible for coding, nice for latex...
 set textwidth=80
 set fo-=t
-"
+
 " Statusline stuff
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2 
@@ -173,3 +173,9 @@ let g:tex_conceal=""
 
 " More tags for html indenting
 let g:html_indent_inctags = "html,body,head,tbody"
+
+" Highlight colours for dark background
+hi Pmenu      ctermfg=Cyan    ctermbg=Blue cterm=None guifg=Cyan  guibg=DarkBlue
+hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
+hi PmenuSbar                  ctermbg=Cyan            guibg=Cyan
+hi PmenuThumb ctermfg=White                           guifg=White
