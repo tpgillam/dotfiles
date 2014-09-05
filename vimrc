@@ -116,9 +116,12 @@ autocmd FileType cpp set commentstring=//\ %s
 
 " Adapt commentary to use "#" for Cmake comments
 autocmd FileType cmake set commentstring=#\ %s
-"
+
 " Adapt commentary to use "{#" for htmldjango comments
 autocmd FileType htmldjango set commentstring={#\ %s\ #}
+
+" Adapt commentary to use "#" for tmux comments
+autocmd FileType tmux set commentstring=#\ %s
 
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
