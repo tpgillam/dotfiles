@@ -154,7 +154,7 @@ let g:clang_complete_auto = 1
 
 " Set clang-format binary
 if has('mac')
-  let g:clang_format#command = 'clang-format-mp-3.6'
+  let g:clang_format#command = 'clang-format-mp-3.5'
 elseif hostname == 'heffalump'
   let g:clang_format#command = 'clang-format-3.5'
 endif
