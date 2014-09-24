@@ -1,1 +1,11 @@
 I am Tom's configuration files!
+
+To use LS_COLORS, add the following to your .bashrc (or .bash_profile)
+
+d=.LS_COLORS
+test -r $d && eval "$(dircolors $d)"
+
+# Useful aliases
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -alh'
+alias sl='ls --color=auto'

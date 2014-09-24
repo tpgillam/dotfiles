@@ -123,6 +123,9 @@ autocmd FileType htmldjango set commentstring={#\ %s\ #}
 " Adapt commentary to use "#" for tmux comments
 autocmd FileType tmux set commentstring=#\ %s
 
+" Adapt commentary to use "#" for Gnuplot comments
+autocmd FileType gp set commentstring=#\ %s
+
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
 " symlink libclang.so -> libclang.so.1)
