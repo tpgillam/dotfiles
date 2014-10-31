@@ -126,13 +126,15 @@ autocmd FileType tmux set commentstring=#\ %s
 " Adapt commentary to use "#" for Gnuplot comments
 autocmd FileType gp set commentstring=#\ %s
 
+" Adapt commentary to use "@c" for texinfo comments
+autocmd FileType texinfo set commentstring=@c\ %s
+
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
 " symlink libclang.so -> libclang.so.1)
 let hostname = substitute(system('hostname'), '\n', '', '')
 if has('mac')
-  " let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
-  let g:clang_library_path = "/Applications/Xcode6-Beta7.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+  let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
 elseif hostname == "heffalump"
   let g:clang_library_path = "/usr/lib/x86_64-linux-gnu"
 elseif has('unix')
