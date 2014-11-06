@@ -9,3 +9,6 @@ test -r $d && eval "$(dircolors $d)"
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -alh'
 alias sl='ls --color=auto'
+
+
+Note that "rc.lua" is to go in .config/awesome/rc.lua
