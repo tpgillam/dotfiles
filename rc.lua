@@ -47,7 +47,7 @@ os.execute("setxkbmap gb; xmodmap ~/heffalump.xmodmap")
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "xterm -tn xterm-256color"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
