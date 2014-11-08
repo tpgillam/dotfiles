@@ -129,6 +129,9 @@ autocmd FileType gp set commentstring=#\ %s
 " Adapt commentary to use "@c" for texinfo comments
 autocmd FileType texinfo set commentstring=@c\ %s
 
+" Adapt commentary to use "#" for gtkrc comments
+autocmd FileType gtkrc set commentstring=#\ %s
+
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
 " symlink libclang.so -> libclang.so.1)

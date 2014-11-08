@@ -39,7 +39,9 @@ end
 -- Set keyboard properties and other such things
 os.execute("xset r rate 220 50")
 -- Apparently this is required to get the # symbol working!
-os.execute("setxkbmap gb; xmodmap ~/heffalump.xmodmap")
+os.execute("xmodmap ~/heffalump.xmodmap")
+os.execute("setxkbmap gb")
+os.execute("xmodmap ~/heffalump.xmodmap")
 -- }}}
 
 -- {{{ Variable definitions
@@ -339,7 +341,8 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = true,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons,
+                     size_hints_honor = false } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },
