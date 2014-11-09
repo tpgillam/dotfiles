@@ -38,6 +38,8 @@ end
 -- {{{ OS level setup
 -- Set keyboard properties and other such things
 os.execute("xset r rate 220 50")
+-- Let's have prettier GTK apps
+os.execute("gnome-settings-daemon &")
 -- Apparently this is required to get the # symbol working!
 os.execute("xmodmap ~/heffalump.xmodmap")
 os.execute("setxkbmap gb")
@@ -48,7 +50,7 @@ os.execute("xmodmap ~/heffalump.xmodmap")
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
--- This is used later as the default terminal and editor to run.
+-- This is used later as the default termial andmeditor to run.
 terminal = "xterm -tn xterm-256color"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor

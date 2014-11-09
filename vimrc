@@ -50,8 +50,17 @@ set textwidth=80
 set fo-=t
 
 " Statusline stuff
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2 
+" Powerline/airline -- ideally need patched fonts from https://github.com/Lokaltog/powerline-fonts
+" enable these for linux only here
+if has("gui_running")
+  if has("gui_gtk2")
+    let g:airline_powerline_fonts = 1
+  endif
+endif
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
 
 " GLSL highlighting
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
@@ -93,12 +102,14 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
-Bundle 'Rip-Rip/clang_complete'
+" Bundle 'Rip-Rip/clang_complete'
 " Bundle 'davidhalter/jedi-vim'
-Bundle 'ervandew/supertab'
+" Bundle 'ervandew/supertab'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
+Bundle 'valloric/YouCompleteMe'
+Bundle 'bling/vim-airline'
 filetype plugin indent on
 
 " Default to light background
@@ -192,3 +203,9 @@ hi Pmenu      ctermfg=Cyan    ctermbg=Blue cterm=None guifg=Cyan  guibg=DarkBlue
 hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue gui=Bold
 hi PmenuSbar                  ctermbg=Cyan            guibg=Cyan
 hi PmenuThumb ctermfg=White                           guifg=White
+
+" set YouCompleteMe global config file
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
+
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
