@@ -41,9 +41,8 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set hlsearch " highlight searches
 
-" Qt highlighting stuff - random options the guy likes
-"color pablo " Pablo colour scheme - this might be a bad idea
-set number " Show line numbers - Hmmmm...
+" Show line numbers - Hmmmm...
+set number
 
 " Automatic wrapping at 80 characters. Horrible for coding, nice for latex...
 set textwidth=80
@@ -110,6 +109,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
 Bundle 'valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
 filetype plugin indent on
 
 " Default to light background
@@ -142,6 +142,9 @@ autocmd FileType texinfo set commentstring=@c\ %s
 
 " Adapt commentary to use "#" for gtkrc comments
 autocmd FileType gtkrc set commentstring=#\ %s
+
+" Color scheme option
+colorscheme badwolf
 
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
