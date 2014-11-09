@@ -101,9 +101,6 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
-" Bundle 'Rip-Rip/clang_complete'
-" Bundle 'davidhalter/jedi-vim'
-" Bundle 'ervandew/supertab'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
@@ -112,7 +109,7 @@ Bundle 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 filetype plugin indent on
 
-" Default to light background
+" Default to dark background
 set background=dark
 
 " Gundo toggling
@@ -144,7 +141,7 @@ autocmd FileType texinfo set commentstring=@c\ %s
 autocmd FileType gtkrc set commentstring=#\ %s
 
 " Color scheme option
-colorscheme badwolf
+colorscheme jellybeans
 
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
