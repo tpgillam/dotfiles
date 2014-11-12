@@ -1,7 +1,7 @@
 "colorscheme macvim
 set background=dark
 " set background=light
-colorscheme gruvbox
+colorscheme xoria256
 
 if has('mac')
   set guifont=Monaco:h10

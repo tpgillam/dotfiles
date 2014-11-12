@@ -141,7 +141,7 @@ autocmd FileType texinfo set commentstring=@c\ %s
 autocmd FileType gtkrc set commentstring=#\ %s
 
 " Color scheme option
-colorscheme jellybeans
+colorscheme xoria256
 
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
@@ -207,5 +207,3 @@ hi PmenuThumb ctermfg=White                           guifg=White
 " set YouCompleteMe global config file
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
