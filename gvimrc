@@ -1,7 +1,7 @@
 "colorscheme macvim
 set background=dark
 " set background=light
-colorscheme xoria256
+colorscheme jellybeans
 
 if has('mac')
   set guifont=Monaco:h10

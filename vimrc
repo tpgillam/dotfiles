@@ -58,6 +58,9 @@ if has("gui_running")
   endif
 endif
 
+" Set airline theme
+let g:airline_theme = 'bubblegum'
+
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
@@ -141,7 +144,7 @@ autocmd FileType texinfo set commentstring=@c\ %s
 autocmd FileType gtkrc set commentstring=#\ %s
 
 " Color scheme option
-colorscheme xoria256
+colorscheme jellybeans
 
 " Setup for clang_complete
 " Clang library file has to have correct name (on Ubuntu needed to create
