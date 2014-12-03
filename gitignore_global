@@ -9,3 +9,7 @@
 
 # Thumbnails
 ._*
+
+# Python temporary files
+__pycache__
+*.pyc

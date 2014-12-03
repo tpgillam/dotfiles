@@ -64,6 +64,9 @@ let g:airline_theme = 'bubblegum'
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
+" Fix background colours over ssh with tmux
+set t_ut=
+
 " GLSL highlighting
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 "
