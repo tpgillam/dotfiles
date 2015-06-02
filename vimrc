@@ -86,6 +86,9 @@ au BufRead,BufNewFile *.icc setfiletype cpp
 " Set .kv to kivy
 au BufRead,BufNewFile *.kv setfiletype kivy
 
+" Set .md to markdown
+au BufRead,BufNewFile *.md setfiletype markdown
+
 " ChangeLog settings
 let g:changelog_username = "Thomas Gillam  <gillam@hep.phy.cam.ac.uk>"
 
@@ -110,7 +113,7 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
-Bundle 'valloric/YouCompleteMe'
+" Bundle 'valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
 filetype plugin indent on
@@ -145,6 +148,9 @@ autocmd FileType texinfo set commentstring=@c\ %s
 
 " Adapt commentary to use "#" for gtkrc comments
 autocmd FileType gtkrc set commentstring=#\ %s
+"
+" Adapt commentary to use "%" for bibtex comments
+autocmd FileType bib set commentstring=%\ %s
 
 " Color scheme option
 colorscheme jellybeans
@@ -213,3 +219,5 @@ hi PmenuThumb ctermfg=White                           guifg=White
 " set YouCompleteMe global config file
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
 
+" Disable auto triggering of YCM
+let g:ycm_auto_trigger=0
