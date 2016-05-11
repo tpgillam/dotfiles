@@ -116,6 +116,7 @@ Bundle 'Keithbsmiley/tmux.vim'
 " Bundle 'valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
+Bundle 'thinca/vim-localrc'
 filetype plugin indent on
 
 " Default to dark background
