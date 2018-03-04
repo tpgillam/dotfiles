@@ -34,6 +34,12 @@ filetype plugin on
 " Load c-completion tags see
 " :help ft-c-omni for how to generate
 set tags +=~/.vim/systags
+set nobackup
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file
+" endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -91,9 +97,24 @@ au BufRead,BufNewFile *.md setfiletype markdown
 " ChangeLog settings
 let g:changelog_username = "Thomas Gillam  <tpgillam@googlemail.com>"
 
-" Highlight 80th column
-set colorcolumn=120
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+" Highlight column
+" set colorcolumn=120
+" let &colorcolumn=join(range(&l:textwidth + 1, &l:textwidth + 2),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+function! s:SetColorColumn()
+    if &textwidth == 0
+        setlocal colorcolumn=81
+    else
+        setlocal colorcolumn=+1
+    endif
+endfunction
+
+augroup colorcolumn
+    autocmd!
+    autocmd OptionSet textwidth call s:SetColorColumn()
+    autocmd BufEnter * call s:SetColorColumn()
+augroup end
 
 " Experimental Vundle support!
 filetype off
@@ -110,6 +131,8 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'kana/vim-operator-user'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
@@ -117,6 +140,7 @@ Bundle 'Keithbsmiley/tmux.vim'
 Bundle 'bling/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
+Bundle 'vim-jp/vim-cpp'
 Bundle 'thinca/vim-localrc'
 Bundle 'maverickg/stan.vim'
 Bundle 'lindemann09/jags.vim'
