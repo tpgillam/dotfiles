@@ -217,8 +217,8 @@ let g:clang_complete_auto = 1
 " let g:clang_snippets_engine='clang_complete'
 
 " Set clang-format binary
-if has('mac')
-  let g:clang_format#command = 'clang-format-mp-3.5'
+if hostname == 'tigger'
+  let g:clang_format#command = 'clang-format-mp-6.0'
 elseif hostname == 'heffalump'
   let g:clang_format#command = 'clang-format-5.0'
 endif
