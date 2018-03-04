@@ -3,6 +3,10 @@ set backspace=indent,eol,start
 syntax on
 set foldmethod=syntax
 
+" Don't store backup files. That's what git is for
+set nobackup
+set nowritebackup
+
 " Specify what we think of as keywords
 set iskeyword=@,48-57,_,192-255
 
@@ -10,9 +14,9 @@ set iskeyword=@,48-57,_,192-255
 set modelines=1
 
 " Tabs are ugly
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 set cindent
@@ -30,11 +34,6 @@ filetype plugin on
 " Load c-completion tags see
 " :help ft-c-omni for how to generate
 set tags +=~/.vim/systags
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -44,8 +43,8 @@ set hlsearch " highlight searches
 " Show line numbers - Hmmmm...
 set number
 
-" Automatic wrapping at 80 characters. Horrible for coding, nice for latex...
-set textwidth=80
+" Automatic wrapping
+set textwidth=120
 set fo-=t
 
 " Statusline stuff
@@ -90,10 +89,11 @@ au BufRead,BufNewFile *.kv setfiletype kivy
 au BufRead,BufNewFile *.md setfiletype markdown
 
 " ChangeLog settings
-let g:changelog_username = "Thomas Gillam  <gillam@hep.phy.cam.ac.uk>"
+let g:changelog_username = "Thomas Gillam  <tpgillam@googlemail.com>"
 
 " Highlight 80th column
-" set colorcolumn=80
+set colorcolumn=120
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Experimental Vundle support!
 filetype off
@@ -115,8 +115,15 @@ Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
 " Bundle 'valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Bundle 'thinca/vim-localrc'
+Bundle 'maverickg/stan.vim'
+Bundle 'lindemann09/jags.vim'
+Bundle 'keith/swift.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'kana/vim-operator-user'
+Bundle 'vim-jp/vim-cpp'
 filetype plugin indent on
 
 " Default to dark background
@@ -153,6 +160,9 @@ autocmd FileType gtkrc set commentstring=#\ %s
 " Adapt commentary to use "%" for bibtex comments
 autocmd FileType bib set commentstring=%\ %s
 
+" Adapt commentary to use "//" for STAN comments
+autocmd FileType stan set commentstring=//\ %s
+
 " Color scheme option
 colorscheme jellybeans
 
@@ -168,7 +178,7 @@ elseif has('unix')
   let g:clang_library_path = "/usera/gillam/utils/clangStuff/build/Release+Asserts/lib"
 endif
 
-let b:clang_user_options = '-std=c++11'
+let b:clang_user_options = '-std=c++17'
 let g:clang_use_library = 1
 let g:clang_close_preview = 1
 " let g:clang_complete_copen = 1
@@ -189,8 +199,13 @@ let g:clang_complete_auto = 1
 if has('mac')
   let g:clang_format#command = 'clang-format-mp-3.5'
 elseif hostname == 'heffalump'
-  let g:clang_format#command = 'clang-format-3.5'
+  let g:clang_format#command = 'clang-format-5.0'
 endif
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
+let g:clang_format#auto_format_on_insert_leave = 0
+autocmd FileType cpp setlocal ts=2 sw=2 sts=2 et
+autocmd FileType cpp set textwidth=80
 
 " Complete options (disable preview scratch window, longest removed to aways
 " show menu)
