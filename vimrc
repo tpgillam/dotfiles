@@ -10,9 +10,9 @@ set iskeyword=@,48-57,_,192-255
 set modelines=1
 
 " Tabs are ugly
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 set cindent
@@ -30,11 +30,12 @@ filetype plugin on
 " Load c-completion tags see
 " :help ft-c-omni for how to generate
 set tags +=~/.vim/systags
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
+set nobackup
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file
+" endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -44,8 +45,8 @@ set hlsearch " highlight searches
 " Show line numbers - Hmmmm...
 set number
 
-" Automatic wrapping at 80 characters. Horrible for coding, nice for latex...
-set textwidth=80
+" Automatic wrapping. Horrible for coding, nice for latex...
+set textwidth=120
 set fo-=t
 
 " Statusline stuff
@@ -92,8 +93,24 @@ au BufRead,BufNewFile *.md setfiletype markdown
 " ChangeLog settings
 let g:changelog_username = "Thomas Gillam  <gillam@hep.phy.cam.ac.uk>"
 
-" Highlight 80th column
-" set colorcolumn=80
+" Highlight column
+" set colorcolumn=120
+" let &colorcolumn=join(range(&l:textwidth + 1, &l:textwidth + 2),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+function! s:SetColorColumn()
+    if &textwidth == 0
+        setlocal colorcolumn=81
+    else
+        setlocal colorcolumn=+1
+    endif
+endfunction
+
+augroup colorcolumn
+    autocmd!
+    autocmd OptionSet textwidth call s:SetColorColumn()
+    autocmd BufEnter * call s:SetColorColumn()
+augroup end
 
 " Experimental Vundle support!
 filetype off
@@ -110,12 +127,16 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'kana/vim-operator-user'
 Bundle 'rhysd/vim-clang-format'
 Bundle 'groenewege/vim-less'
 Bundle 'Keithbsmiley/tmux.vim'
 " Bundle 'valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
+Bundle 'vim-jp/vim-cpp'
 filetype plugin indent on
 
 " Default to dark background
@@ -167,7 +188,7 @@ elseif has('unix')
   let g:clang_library_path = "/usera/gillam/utils/clangStuff/build/Release+Asserts/lib"
 endif
 
-let b:clang_user_options = '-std=c++11'
+let b:clang_user_options = '-std=c++17'
 let g:clang_use_library = 1
 let g:clang_close_preview = 1
 " let g:clang_complete_copen = 1
@@ -188,8 +209,13 @@ let g:clang_complete_auto = 1
 if has('mac')
   let g:clang_format#command = 'clang-format-mp-3.5'
 elseif hostname == 'heffalump'
-  let g:clang_format#command = 'clang-format-3.5'
+  let g:clang_format#command = 'clang-format-5.0'
 endif
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
+let g:clang_format#auto_format_on_insert_leave = 0
+autocmd FileType cpp setlocal ts=2 sw=2 sts=2 et
+autocmd FileType cpp set textwidth=80
 
 " Complete options (disable preview scratch window, longest removed to aways
 " show menu)
