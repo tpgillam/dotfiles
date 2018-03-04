@@ -137,6 +137,7 @@ Bundle 'bling/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Bundle 'vim-jp/vim-cpp'
+Bundle 'thinca/vim-localrc'
 filetype plugin indent on
 
 " Default to dark background
