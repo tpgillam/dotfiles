@@ -7,6 +7,9 @@ set foldmethod=syntax
 set nobackup
 set nowritebackup
 
+" Don't pollute cwd with .swp files
+set directory^=$HOME/.vim/tmp//
+
 " Specify what we think of as keywords
 set iskeyword=@,48-57,_,192-255
 
@@ -145,6 +148,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'vim-jp/vim-cpp'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'JuliaEditorSupport/julia-vim'
 filetype plugin indent on
 
 " Default to dark background
@@ -183,6 +187,9 @@ autocmd FileType bib set commentstring=%\ %s
 
 " Adapt commentary to use "//" for STAN comments
 autocmd FileType stan set commentstring=//\ %s
+
+" Custom text width for Julia
+autocmd FileType julia setlocal textwidth=92
 
 " Color scheme option
 colorscheme jellybeans
@@ -225,8 +232,8 @@ endif
 let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 let g:clang_format#auto_format_on_insert_leave = 0
-autocmd FileType cpp setlocal ts=2 sw=2 sts=2 et
-autocmd FileType cpp set textwidth=80
+autocmd FileType cpp setlocal ts=4 sw=4 sts=4 et
+autocmd FileType cpp set textwidth=120
 
 " Complete options (disable preview scratch window, longest removed to aways
 " show menu)
