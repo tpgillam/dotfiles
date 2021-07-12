@@ -1,7 +1,7 @@
 # vim: filetype=gitconfig :
 [user]
-  email = tpgillam@googlemail.com
-  name = Thomas Gillam
+	email = thomas.gillam@invenialabs.co.uk
+	name = Tom Gillam
 [color]
   ui = true
 [merge]
@@ -10,3 +10,15 @@
   default = matching
 [core]
   excludesfile = ~/.gitignore_global
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[credential]
+	helper = osxkeychain
+[credential "https://gitlab.invenia.ca"]
+	username = thomas.gillam
+[credential "https://gitlab.invenia"]
+	ca = thomas.gillam
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
