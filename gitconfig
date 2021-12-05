@@ -1,6 +1,6 @@
 # vim: filetype=gitconfig :
 [user]
-	email = thomas.gillam@invenialabs.co.uk
+	email = tpgillam@googlemail.com
 	name = Tom Gillam
 [color]
   ui = true
