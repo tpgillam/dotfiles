@@ -6,3 +6,4 @@ gitignore_global
 tmux.conf
 LS_COLORS
 JuliaFormatter
+alacritty.yml
