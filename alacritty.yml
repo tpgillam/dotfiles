@@ -31,7 +31,7 @@ colors:
 font:
   normal:
     family: JuliaMono
-  size: 13.0
+  size: 14.0
     
 # key_bindings:
 #   # This is needed to be able to type "#" on MacOS...
