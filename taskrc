@@ -40,9 +40,14 @@ include solarized-dark-256.theme
 #include no-color.theme
 
 news.version=2.6.0
+
+# Stuff for FreeCinc
 taskd.server=freecinc.com:53589
 taskd.key=$HOME/.task/freecinc_606cb61f.key.pem
 taskd.certificate=$HOME/.task/freecinc_606cb61f.cert.pem
 taskd.ca=$HOME/.task/freecinc_606cb61f.ca.pem
 # Store FreeCinc credentials elsewhere:
 include $HOME/.task/freecinc_credentials.taskrc
+
+# Default to case INSENSITIVE search, which is often handy
+search.case.sensitive=no
