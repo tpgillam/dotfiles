@@ -44,3 +44,5 @@ taskd.server=freecinc.com:53589
 taskd.key=$HOME/.task/freecinc_606cb61f.key.pem
 taskd.certificate=$HOME/.task/freecinc_606cb61f.cert.pem
 taskd.ca=$HOME/.task/freecinc_606cb61f.ca.pem
+# Store FreeCinc credentials elsewhere:
+include $HOME/.task/freecinc_credentials.taskrc
