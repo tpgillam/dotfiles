@@ -51,3 +51,11 @@ include $HOME/.task/freecinc_credentials.taskrc
 
 # Default to case INSENSITIVE search, which is often handy
 search.case.sensitive=no
+
+# Define contexts
+context.work.read=+work
+context.work.write=+work
+context.home.read=-work
+
+# Aliases
+alias.@=context
