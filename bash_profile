@@ -80,7 +80,7 @@ mkproj() {
         echo "Making $dirname"
         mkdir $dirname
         cd $dirname
-        echo 'style = "blue"\n' >> .JuliaFormatter.toml  # Add a JuliaFormatter configuration file
+        printf 'style = "blue"\n' > .JuliaFormatter.toml  # Add a JuliaFormatter configuration file
         julia --project=. -e 'using Pkg; Pkg.add("Revise")'
     )
     cd $dirname
