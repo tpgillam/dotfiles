@@ -94,7 +94,7 @@ mkproj() {
 dev() {
     ( set -e
         echo "Checking out $1"
-        julia -e 'using Pkg; Pkg.develop("'$1'"); Pkg.rm("'$1'")'
+        julia --project=$(mktemp -d) -e 'using Pkg; Pkg.develop("'$1'")'
     )
     dirname="$HOME/.julia/dev/$1"
     cd $dirname
@@ -118,9 +118,10 @@ makedocs() {
         include("docs/make.jl")'
 }
 
-# Run Julia tests for the current package
+# Run Julia tests for the current package.
+# This should work when run from any subdirectory of that package.
 runtest() {
-    julia --project=. -e '
+    julia --project=@. -e '
         using Pkg
         Pkg.test()'
 }
