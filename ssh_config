@@ -1,0 +1,5 @@
+Host oracc
+    HostName oracc.ub.uni-muenchen.de
+    User tgillam
+    Port 22000
+    LocalForward 8051 localhost:8051
