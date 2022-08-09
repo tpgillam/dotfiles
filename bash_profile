@@ -85,6 +85,16 @@ mkproj() {
     julia --project=.
 }
 
+# Make a new Julia package in .dev with my template and switch to it.
+# The only argument is the package name.
+mkpackage() {
+    julia --project=$(mktemp -d) -e '
+        using Pkg
+        Pkg.add("PkgTemplates")
+        include(expanduser("~/dotfiles/julia_template/template.jl"))
+        tom_template("'$1'")'
+}
+
 # Check out a Julia package for development, and switch to it.
 # It will do this in the global Julia env, and then immediately remove it from
 # the env
