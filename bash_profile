@@ -60,9 +60,6 @@ export PATH="/opt/homebrew/opt/python3/libexec/bin/:$PATH"
 # Rust installation
 . "$HOME/.cargo/env"
 
-# Julia
-export PATH="/Applications/Julia-1.7.app/Contents/Resources/julia/bin:$PATH"
-
 # VSCode
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
