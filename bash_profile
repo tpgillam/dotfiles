@@ -29,14 +29,6 @@ export HISTSIZE=10000
 
 export CLICOLOR=1
 
-# These are for giving nicer colours to `ls`
-# Light
-#export LSCOLORS=ExFxCxDxBxegedabagacad
-# Dark
-export LSCOLORS=GxFxCxDxBxegedabagaced
-d=~/.LS_COLORS
-test -r $d && eval "$(dircolors $d)"
-
 # Useful ls aliases. -N disables wrapping of things with inverted commas
 alias ls='ls -N --color=auto'
 alias ll='ls -N --color=auto -alh'
@@ -62,6 +54,19 @@ export PATH="/opt/homebrew/opt/python3/libexec/bin/:$PATH"
 
 # VSCode
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+
+############################################
+# LS colours — `dircolors` must be on path #
+############################################
+
+# These are for giving nicer colours to `ls`
+# Light
+#export LSCOLORS=ExFxCxDxBxegedabagacad
+# Dark
+export LSCOLORS=GxFxCxDxBxegedabagaced
+d=~/.LS_COLORS
+test -r $d && eval "$(dircolors $d)"
 
 
 
