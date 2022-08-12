@@ -97,7 +97,12 @@ mkpackage() {
         using Pkg
         Pkg.add("PkgTemplates")
         include(expanduser("~/dotfiles/julia_template/template.jl"))
-        tom_template("'$1'")'
+        tom_template("'$1'")
+        println()
+        println("Generating documentation key...")
+        Pkg.add("DocumenterTools")
+        using DocumenterTools
+        DocumenterTools.genkeys(; user="tpgillam", repo="'$1'.jl")'
 }
 
 # Check out a Julia package for development, and switch to it.
