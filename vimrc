@@ -3,6 +3,9 @@ set backspace=indent,eol,start
 syntax on
 set foldmethod=syntax
 
+" Don't be case-insensitive when completing file names.
+set nofileignorecase
+
 " Don't store backup files. That's what git is for
 set nobackup
 set nowritebackup
@@ -98,7 +101,7 @@ au BufRead,BufNewFile *.kv setfiletype kivy
 au BufRead,BufNewFile *.md setfiletype markdown
 
 " ChangeLog settings
-let g:changelog_username = "Thomas Gillam  <tpgillam@googlemail.com>"
+let g:changelog_username = "Tom Gillam <tpgillam@googlemail.com>"
 
 " Highlight column
 " set colorcolumn=120
