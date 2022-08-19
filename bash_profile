@@ -146,6 +146,8 @@ runtest() {
 # Run Julia notebook for the current project
 run_notebook() {
     julia --project=. -e '
+        using Pkg
+        Pkg.build("IJulia")  # This is needed to pick up new kernels, e.g. if the jupyter version has changed.
         using IJulia
         notebook(; dir=".")'
 }
