@@ -75,9 +75,8 @@ test -r $d && eval "$(dircolors $d)"
 #####################
 
 # Make a julia project in the current directory.
-# The only argument is the name, and it will prepend today's date.
 mkproj() {
-    dirname="`pwd`/$(date +'%Y%m%d')_$1"
+    dirname="`pwd`/$1"
     ( set -e
         echo "Making $dirname"
         mkdir $dirname
@@ -88,6 +87,11 @@ mkproj() {
     cd $dirname
     code . --goto Project.toml:1
     julia --project=.
+}
+
+# The only argument is the name, and it will prepend today's date.
+mkdatedproj() {
+    mkproj "$(date +'%Y%m%d')_$1"
 }
 
 # Make a new Julia package in .dev with my template and switch to it.
