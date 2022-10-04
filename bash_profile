@@ -55,6 +55,10 @@ export PATH="/opt/homebrew/opt/python3/libexec/bin/:$PATH"
 # VSCode
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
+# Bash completion:
+#   requires `bash-completion` to have been installed via homebrew
+  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
 
 ############################################
 # LS colours — `dircolors` must be on path #
