@@ -49,7 +49,7 @@ function tom_template(package_name::AbstractString; kwargs...)
     return x
 end
 
-function tom_template(; dir::Union{Nothing,String}=nothing, julia=v"1.5")
+function tom_template(; dir::Union{Nothing,String}=nothing, julia=v"1.6")
     dir_arg = isnothing(dir) ? () : (; dir)
     Template(;
         user="tpgillam",
