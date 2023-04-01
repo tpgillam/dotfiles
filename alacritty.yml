@@ -40,7 +40,9 @@ font:
 #
 # Alternatively, switching this to 'false' seems to work too. No negative impact found so far...
 # Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: false
+# NB 2023-04-01: apparently this option has been removed, and is always set to true.
+#   Typing "#" now seems to work out-of-the-box in any case.
+# alt_send_esc: false
 
 
 # # Colors (Jellybeans)
