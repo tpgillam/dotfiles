@@ -29,6 +29,6 @@
   - [git submodule update --init --recursive, Installing submodules]
 
   # Set up Vundle & plugins
-  - dir="~/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
+  - dir="$HOME/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
   - [vim +PluginInstall +qall]
     
