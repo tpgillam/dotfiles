@@ -14,10 +14,6 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [credential]
 	helper = store
-[credential "https://gitlab.invenia.ca"]
-	username = thomas.gillam
-[credential "https://gitlab.invenia"]
-	ca = thomas.gillam
 [init]
 	defaultBranch = main
 [pull]
