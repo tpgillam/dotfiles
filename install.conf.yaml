@@ -8,6 +8,7 @@
 - link:
     ~/.config/alacritty.yml: alacritty.yml
     ~/.config/awesome/rc.lua: rc.lua
+    ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
@@ -16,7 +17,6 @@
     ~/.gitignore_global: gitignore_global
     ~/.gvimrc: gvimrc
     # TODO julia_template
-    # TODO karabiner.json
     ~/.ssh/config: ssh_config
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
