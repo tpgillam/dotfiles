@@ -12,11 +12,11 @@ require("lazy").setup(
 )
 
 -- Options
+
 -- We have to enable `termguicolors` for certain colorschemes to work correctly
 vim.opt.termguicolors = true
 
 -- Choose the colorscheme
-
 vim.cmd.colorscheme("jellybeans-nvim")
 
 -- No tabs, please
@@ -27,7 +27,6 @@ vim.opt.expandtab = true
 
 -- Line numbers
 vim.opt.relativenumber = true
-
 
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
