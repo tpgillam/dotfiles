@@ -1,0 +1,34 @@
+- defaults:
+    link:
+      create: true  # Create parent directories as necessary
+      relink: true  # Re-generate existing links
+
+- clean: ["~"]
+
+- link:
+    ~/.config/alacritty.yml: alacritty.yml
+    ~/.config/awesome/rc.lua: rc.lua
+    ~/.config/karabiner/karabiner.json: karabiner.json
+    ~/.config/nvim: nvim
+    ~/.JuliaFormatter.toml: JuliaFormatter.toml
+    ~/.LS_COLORS: LS_COLORS
+    # ~/.bash_profile: bash_profile  # TODO This is done manually for now
+    ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
+    ~/.gvimrc: gvimrc
+    # TODO julia_template
+    ~/.ssh/config: ssh_config
+    ~/.taskrc: taskrc
+    ~/.tmux.conf: tmux.conf
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    
+
+- shell:
+  # Update the dotbot module
+  - [git submodule update --init --recursive, Installing submodules]
+
+  # Set up Vundle & plugins
+  - dir="~/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
+  - [vim +PluginInstall +qall]
+    
