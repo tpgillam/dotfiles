@@ -11,8 +11,9 @@ require("lazy").setup(
 )
 
 -- Choose the colorscheme
-vim.cmd.set("termguicolors")
-vim.cmd.colorscheme("nordfox")
+-- We have to enable `termguicolors` for certain colorschemes to work correctly
+vim.opt.termguicolors = true
+vim.cmd.colorscheme("duskfox")
 
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
