@@ -6,16 +6,17 @@
 - clean: ["~"]
 
 - link:
+    ~/.config/alacritty.yml: alacritty.yml
+    ~/.config/awesome/rc.lua: rc.lua
+    ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
-    ~/.config/alacritty.yml: alacritty.yml
     # ~/.bash_profile: bash_profile  # TODO This is done manually for now
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.gvimrc: gvimrc
     # TODO julia_template
     # TODO karabiner.json
-    ~/.config/awesome/rc.lua: rc.lua
     ~/.ssh/config: ssh_config
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
