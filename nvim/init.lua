@@ -10,8 +10,11 @@ require("lazy").setup(
 	}
 )
 
--- Other keymapping changes
+-- Choose the colorscheme
+vim.cmd.set("termguicolors")
+vim.cmd.colorscheme("nordfox")
 
+-- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)  -- Show Lazy manager
 
