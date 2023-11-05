@@ -19,6 +19,11 @@ vim.opt.termguicolors = true
 -- Choose the colorscheme
 vim.cmd.colorscheme("jellybeans-nvim")
 
+-- No mouse support, please. 
+-- Among other things it hijacks selection - in WSL2 makes it impossible to 
+-- select and copy text into the windows buffer.
+vim.opt.mouse = ""
+
 -- No tabs, please
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
