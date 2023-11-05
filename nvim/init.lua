@@ -4,11 +4,11 @@ vim.g.mapleader = " "
 
 -- Packages should be initialised _after_ remapping the <leader>
 require("lazy").setup(
-	"plugins",  -- This will load all files in the `plugins` module.
-	{
+    "plugins",  -- This will load all files in the `plugins` module.
+    {
         -- Make it easier to see the edge of the Lazy plugin manager.
-		ui = { border = "double" }
-	}
+        ui = { border = "double" }
+    }
 )
 
 -- Options
@@ -19,8 +19,8 @@ vim.opt.termguicolors = true
 -- Choose the colorscheme
 vim.cmd.colorscheme("nightfox")
 
--- No mouse support, please. 
--- Among other things it hijacks selection - in WSL2 makes it impossible to 
+-- No mouse support, please.
+-- Among other things it hijacks selection - in WSL2 makes it impossible to
 -- select and copy text into the windows buffer.
 vim.opt.mouse = ""
 
