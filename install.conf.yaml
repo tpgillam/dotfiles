@@ -12,11 +12,10 @@
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
-    # ~/.bash_profile: bash_profile  # TODO This is done manually for now
+    ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.gvimrc: gvimrc
-    # TODO julia_template
     ~/.ssh/config: ssh_config
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
@@ -32,6 +31,6 @@
   - dir="$HOME/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
   # Note - we are avoiding chicken-and-egg errors in the vimrc.
   # there _will_ be errors when we load the vimrc, but by loading the vimrc later
-  # we manager to actually install the plugins in this step.
+  # we manage to actually install the plugins in this step.
   - [vim --clean '+source ~/.vimrc' +PluginInstall +qall]
     
