@@ -28,7 +28,10 @@
   # Update the dotbot module
   - [git submodule update --init --recursive, Installing submodules]
 
-  # Set up Vundle & plugins
+  # Set up Vundle & plugins.
   - dir="$HOME/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
-  - [vim +PluginInstall +qall]
+  # Note - we are avoiding chicken-and-egg errors in the vimrc.
+  # there _will_ be errors when we load the vimrc, but by loading the vimrc later
+  # we manager to actually install the plugins in this step.
+  - [vim --clean '+source ~/.vimrc' +PluginInstall +qall]
     
