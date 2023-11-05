@@ -20,3 +20,11 @@ export PATH="/opt/homebrew/opt/python3/libexec/bin/:$PATH"
 # VSCode
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
+
+##################
+# source .bashrc #
+##################
+# After PATH is setup, load bash configuration. This won't happen
+# automatically in a login shell if `.profile` or `.bash_profile` exists.
+[ -f ~/.bashrc ] && . ~/.bashrc
+
