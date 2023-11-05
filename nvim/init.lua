@@ -17,7 +17,7 @@ require("lazy").setup(
 vim.opt.termguicolors = true
 
 -- Choose the colorscheme
-vim.cmd.colorscheme("jellybeans-nvim")
+vim.cmd.colorscheme("nightfox")
 
 -- No mouse support, please. 
 -- Among other things it hijacks selection - in WSL2 makes it impossible to 
