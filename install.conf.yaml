@@ -32,5 +32,5 @@
   # Note - we are avoiding chicken-and-egg errors in the vimrc.
   # there _will_ be errors when we load the vimrc, but by loading the vimrc later
   # we manage to actually install the plugins in this step.
-  - [vim --clean '+source ~/.vimrc' +PluginInstall +qall]
+  - [command vim --clean '+source ~/.vimrc' +PluginInstall +qall]
     

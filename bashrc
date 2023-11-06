@@ -31,6 +31,10 @@ alias ll='ls -alh'
 alias sl='ls'
 alias grep='grep --color=auto'
 
+# Use Neovim instead of vim
+alias vim='nvim'
+
+
 #########################################
 # LS colours — if `dircolors` available #
 #########################################
