@@ -12,6 +12,7 @@ return {
 				"javascript", 
 				"julia",
 				"lua", 
+                "markdown",
 				"python",
 				"rust",
 				"vim", 

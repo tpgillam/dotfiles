@@ -38,3 +38,4 @@ vim.opt.relativenumber = true
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)  -- Show Lazy manager
 
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)  -- Autoformat with LSP
