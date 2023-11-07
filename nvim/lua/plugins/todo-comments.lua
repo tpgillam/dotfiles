@@ -4,7 +4,8 @@ return {
     opts = {
         signs = false,  -- No gutter signs for me.
         highlight = {
-            keyword = "bg",  -- The default makes it impossible to see the surrounding characters
+            keyword = "bg",  -- The default ("wide") makes it hard to see the surrounding characters
+            after = "",  -- Don't highlight the rest of the comment (default is "fg").
         },
     },
 }
