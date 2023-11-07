@@ -68,8 +68,9 @@ fi
 
 # Make a julia project in the current directory.
 mkproj() {
+    set -e
     dirname="`pwd`/$1"
-    ( set -e
+    (
         echo "Making $dirname"
         mkdir $dirname
         cd $dirname
@@ -105,7 +106,8 @@ mkpackage() {
 # It will do this in the global Julia env, and then immediately remove it from
 # the env
 dev() {
-    ( set -e
+    set -e
+    (
         echo "Checking out $1"
         julia --project=$(mktemp -d) -e 'using Pkg; Pkg.develop("'$1'")'
     )
@@ -115,7 +117,7 @@ dev() {
     echo '{
     "julia.environmentPath": "'$dirname'"
 }' > .vscode/settings.json
-    ( set -e
+    (
         echo "Instantiating..."
         julia --project=. -e 'using Pkg; Pkg.instantiate()'
     )
