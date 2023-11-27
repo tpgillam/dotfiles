@@ -130,6 +130,7 @@ makedocs() {
         using Pkg
         Pkg.develop(PackageSpec(path=pwd()))
         Pkg.instantiate()
+        Pkg.update()
         include("docs/make.jl")'
 }
 
