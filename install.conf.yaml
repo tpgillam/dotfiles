@@ -16,6 +16,7 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.gvimrc: gvimrc
+    ~/.julia/config/startup.jl: startup.jl
     ~/.ssh/config: ssh_config
     ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
