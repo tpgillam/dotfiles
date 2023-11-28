@@ -8,12 +8,12 @@ using PkgTemplates
 using PkgTemplates: @plugin, @with_kw_noshow, Plugin
 using PkgTemplates: combined_view, gen_file, render_file, tags
 
-# FIXME This function is a bit of a hack
+# FIXME: This function is a bit of a hack
 function default_file(path...)
     return expanduser(joinpath("~", "dotfiles", "julia_template", path...))
 end
 
-# TODO This would be nicer if templated on the CI plugin type, but then I can't use
+# TODO: This would be nicer if templated on the CI plugin type, but then I can't use
 # @plugin, and I'm lazy.
 @plugin struct JuliaFormatterGitHubActions <: Plugin
     style::String="blue"
@@ -68,12 +68,12 @@ function tom_template(; dir::Union{Nothing,String}=nothing, julia=v"1.6")
             TagBot(),
             CompatHelper(),
             Documenter{GitHubActions}(; 
-                makedocs_kwargs=Dict(:strict => true, :checkdocs => :exports)
+                makedocs_kwargs=Dict(:checkdocs => :exports)
             ),
             BlueStyleBadge(),
             ColPracBadge(),
             GitHubActions(),  # CI
-            JuliaFormatterGitHubActions(), # FIXME this is the nasty one.
+            JuliaFormatterGitHubActions(), # FIXME: this is the nasty one.
         ]
     )
 end
