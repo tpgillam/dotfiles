@@ -68,9 +68,9 @@ fi
 
 # Make a julia project in the current directory.
 mkproj() {
-    set -e
     dirname="`pwd`/$1"
     (
+        set -e
         echo "Making $dirname"
         mkdir $dirname
         cd $dirname
@@ -105,9 +105,11 @@ mkpackage() {
 # Check out a Julia package for development, and switch to it.
 # It will do this in the global Julia env, and then immediately remove it from
 # the env
+# FIXME: generalise this to work with URLs -- needs to use the `url` argument to
+#   Pkg.develop, and then do trimming to find the dirname.
 dev() {
-    set -e
     (
+        set -e
         echo "Checking out $1"
         julia --project=$(mktemp -d) -e 'using Pkg; Pkg.develop("'$1'")'
     )
