@@ -90,7 +90,7 @@ mkdatedproj() {
 # Make a new Julia package in .dev with my template and switch to it.
 # The only argument is the package name.
 mkpackage() {
-    julia --project=$(mktemp -d) -e '
+    julia --startup-file=no --project=$(mktemp -d) -e '
         using Pkg
         Pkg.add("PkgTemplates")
         include(expanduser("~/dotfiles/julia_template/template.jl"))
@@ -103,32 +103,44 @@ mkpackage() {
 }
 
 # Check out a Julia package for development, and switch to it.
-# It will do this in the global Julia env, and then immediately remove it from
-# the env
-# FIXME: generalise this to work with URLs -- needs to use the `url` argument to
-#   Pkg.develop, and then do trimming to find the dirname.
-dev() {
-    (
-        set -e
-        echo "Checking out $1"
-        julia --project=$(mktemp -d) -e 'using Pkg; Pkg.develop("'$1'")'
-    )
-    dirname="$HOME/.julia/dev/$1"
-    cd $dirname
-    mkdir -p .vscode
-    echo '{
-    "julia.environmentPath": "'$dirname'"
-}' > .vscode/settings.json
-    (
-        echo "Instantiating..."
-        julia --project=. -e 'using Pkg; Pkg.instantiate()'
-    )
-    code .
-}
+dev() {(
+    set -e
+    echo "Checking out $1"
+    # Don't use the startup file as it adds a bit of latency (by importing Revise)
+    julia --startup-file=no -e '
+        using Pkg
+        Pkg.activate(; temp=true)
+        pkg = "'$1'"
+        if startswith(pkg, "https://") || startswith(pkg, "git@github.com")
+            Pkg.develop(url=pkg)
+        else
+            Pkg.develop(pkg)
+        end
+
+        # Get the location of the package that we just got -- activate and instantiate it.
+        package_dir = joinpath(Pkg.devdir(), only(keys(Pkg.project().dependencies)))
+        
+        Pkg.activate(package_dir)
+        Pkg.instantiate()
+
+        # Make vscode use the correct environment.
+        vscode_config_file = joinpath(package_dir, ".vscode", "settings.json")
+        if !isfile(vscode_config_file)
+            mkpath(dirname(vscode_config_file))
+            write(vscode_config_file, "\"julia.environmentPath\": $package_dir")
+        end
+
+        # Flush to ensure that progress-bars that are written to stdout when cloning packages 
+        # are all gone.
+        flush(stdout)
+
+        # Print the package directory so the calling shell knows where it is.
+        println("\n\nDeveloped $pkg to $package_dir")'
+)}
 
 # Build Julia documentation in the current project.
 makedocs() {
-    julia --project=docs -e '
+    julia --startup-file=no --project=docs -e '
         using Pkg
         Pkg.develop(PackageSpec(path=pwd()))
         Pkg.instantiate()
@@ -139,14 +151,14 @@ makedocs() {
 # Run Julia tests for the current package.
 # This should work when run from any subdirectory of that package.
 runtest() {
-    julia --project=@. -e '
+    julia --startup-file=no --project=@. -e '
         using Pkg
         Pkg.test()'
 }
 
 # Run Julia notebook for the current project
 run_notebook() {
-    julia --project=. -e '
+    julia --startup-file=no --project=. -e '
         using Pkg
         Pkg.build("IJulia")  # This is needed to pick up new kernels, e.g. if the jupyter version has changed.
         using IJulia
@@ -155,7 +167,7 @@ run_notebook() {
 
 # List the running notebooks via Julia, e.g. to get auth keys
 notebook_list() {
-    julia --project=. -e '
+    julia --startup-file=no --project=. -e '
         using IJulia
         jupyter = IJulia.find_jupyter_subcommand("")[1]
         run(`$(jupyter) notebook list`)'
