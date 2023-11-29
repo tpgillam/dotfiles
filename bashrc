@@ -103,9 +103,7 @@ mkpackage() {
 }
 
 # Check out a Julia package for development, and switch to it.
-dev() {(
-    set -e
-    echo "Checking out $1"
+dev() {
     # Don't use the startup file as it adds a bit of latency (by importing Revise)
     julia --startup-file=no -e '
         using Pkg
@@ -130,13 +128,9 @@ dev() {(
             write(vscode_config_file, "\"julia.environmentPath\": $package_dir")
         end
 
-        # Flush to ensure that progress-bars that are written to stdout when cloning packages 
-        # are all gone.
-        flush(stdout)
-
         # Print the package directory so the calling shell knows where it is.
         println("\n\nDeveloped $pkg to $package_dir")'
-)}
+}
 
 # Build Julia documentation in the current project.
 makedocs() {
