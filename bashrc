@@ -167,4 +167,3 @@ notebook_list() {
         run(`$(jupyter) notebook list`)'
 }
 
-
