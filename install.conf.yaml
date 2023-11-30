@@ -7,7 +7,7 @@
 
 - link:
     ~/.config/alacritty.yml: alacritty.yml
-    ~/.config/awesome/rc.lua: rc.lua
+    ~/.config/awesome/rc.lua: awesomerc.lua
     ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
