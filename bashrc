@@ -75,10 +75,11 @@ mkproj() {
         mkdir $dirname
         cd $dirname
         printf 'style = "blue"\n' > .JuliaFormatter.toml  # Add a JuliaFormatter configuration file
-        julia --project=. -e 'using Pkg; Pkg.add("Revise")'
+        # Create empty Project.toml & Manifest.toml
+        touch Project.toml
+        julia --startup-file=no --project=. -e 'using Pkg; Pkg.instantiate()'
     )
     cd $dirname
-    code . --goto Project.toml:1
     julia --project=.
 }
 
