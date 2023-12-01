@@ -32,3 +32,10 @@ depending on how your system is configured.
 Note that all other idempotent shell configuration (e.g. functions, aliases, prompt) are stored in `~/.bashrc`.
 This file is designed to be portable.
 
+## Optional setup
+
+### Rust + vim integration
+Need to install [rustup](https://rustup.rs/), and then `rust-analyzer` with:
+```
+rustup component add rust-analyzer
+```
