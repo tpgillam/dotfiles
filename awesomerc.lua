@@ -116,11 +116,15 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()  -- TOM CHANGE just using one layout
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget {
+    widget = wibox.widget.textclock,
+    format = '%B %d (%A), %H:%M:%S',
+    refresh = 5
+}
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
