@@ -28,6 +28,7 @@ return {
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<C-e>"] = cmp.mapping.close(),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
             }),
             -- TODO: Remove buffer, path, cmdline from here and above if not using?
             sources = cmp.config.sources(
