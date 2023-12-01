@@ -55,6 +55,11 @@ os.execute("xset r rate 220 50")
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")  -- TOM CHANGE
 
+-- TOM CHANGE
+-- Some theming changes
+beautiful.useless_gap = 6  -- a little padding between windows
+beautiful.wallpaper = os.getenv("HOME") .. "/dotfiles/backgrounds/sea-otter.jpeg"
+
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"  -- TOM CHANGE
 editor = os.getenv("EDITOR") or "vi"
@@ -69,11 +74,11 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {  -- TOM CHANGE
-    awful.layout.suit.tile.left,
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
+    awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
@@ -512,7 +517,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end  -- TOM CHANGE
 
     if awesome.startup
       and not c.size_hints.user_position
