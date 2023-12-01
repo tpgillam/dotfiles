@@ -32,7 +32,7 @@ vim.opt.expandtab = true
 
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
