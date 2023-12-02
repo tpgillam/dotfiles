@@ -13,6 +13,10 @@ return {
                     -- Code action groups
                     vim.keymap.set("n", "<leader>a", rt.code_action_group.code_action_group, opts)
                     vim.keymap.set("n", "<leader>do", rt.external_docs.open_external_docs, opts)
+
+                    -- Make the inlay hints darker. By default the highlight is "Comment", which is
+                    --  confusing.
+                    rt.config.options.tools.inlay_hints.highlight = "Conceal"
                 end,
             }
         })
