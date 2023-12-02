@@ -59,6 +59,8 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")  -- TOM
 -- Some theming changes
 beautiful.useless_gap = 4  -- a little padding between windows
 beautiful.wallpaper = os.getenv("HOME") .. "/dotfiles/backgrounds/sea-otter.jpeg"
+beautiful.border_width = 4
+beautiful.border_focus = "#00ffff"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"  -- TOM CHANGE
@@ -580,10 +582,11 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+-- TOM CHANGE (disable sloppy focus)
+-- -- Enable sloppy focus, so that focus follows mouse.
+-- client.connect_signal("mouse::enter", function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = false})
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
