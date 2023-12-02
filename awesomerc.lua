@@ -57,7 +57,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")  -- TOM
 
 -- TOM CHANGE
 -- Some theming changes
-beautiful.useless_gap = 6  -- a little padding between windows
+beautiful.useless_gap = 4  -- a little padding between windows
 beautiful.wallpaper = os.getenv("HOME") .. "/dotfiles/backgrounds/sea-otter.jpeg"
 
 -- This is used later as the default terminal and editor to run.
