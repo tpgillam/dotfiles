@@ -32,6 +32,7 @@ alias grep='grep --color=auto'
 
 # Use Neovim instead of vim
 alias vim='nvim'
+alias vimdiff='nvim -d'
 
 # Do not make my terminal hang if I mistype things, since that happens
 # very frequently. By default many modern distros will set this to
