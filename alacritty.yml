@@ -33,6 +33,16 @@ font:
     family: JuliaMono Nerd Font Mono
   size: 12.0
 
+env:
+  # This seems to be required to get colours rendering properly
+  # within tmux. See some discussion here:
+  #   https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+  #   https://github.com/tmux/tmux/issues/696
+  #
+  # The other changes suggested to tmux.conf in that second link were not
+  # necessary after changing this.
+  TERM: xterm-256color
+
 # Settings for Windows + WSL
 
 # shell:
