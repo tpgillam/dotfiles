@@ -25,7 +25,6 @@ export HISTSIZE=10000
 export CLICOLOR=1
 
 # Useful ls aliases. -N disables wrapping of things with inverted commas
-
 alias ls='ls -N --color=auto'
 alias ll='ls -alh'
 alias sl='ls'
@@ -34,6 +33,11 @@ alias grep='grep --color=auto'
 # Use Neovim instead of vim
 alias vim='nvim'
 
+# Do not make my terminal hang if I mistype things, since that happens
+# very frequently. By default many modern distros will set this to
+# look in the package manager for a package that might provide the
+# command.
+unset command_not_found_handle
 
 #########################################
 # LS colours — if `dircolors` available #
