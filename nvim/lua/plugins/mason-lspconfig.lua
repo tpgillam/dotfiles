@@ -17,12 +17,12 @@ return {
         require("lspconfig").lua_ls.setup {
             settings = {
                 Lua = {
-                    diagnostics = {
-                        -- Recognise various globals that are used by tools I configure.
-                        globals = { "vim" }
-                    },
+                    -- Load the neovim API, to avoid 'undefined global' errors.
                     workspace = {
-                        library = vim.api.nvim_get_runtime_file('', true),
+                        library = vim.api.nvim_get_runtime_file('lua', true),
+                    },
+                    telemetry = {
+                        enable = false,
                     }
                 }
             }
