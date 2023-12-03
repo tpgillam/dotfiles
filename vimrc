@@ -126,7 +126,6 @@ augroup end
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-" Bundle 'valloric/YouCompleteMe'
 Bundle 'Keithbsmiley/tmux.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'airblade/vim-gitgutter'
@@ -263,8 +262,3 @@ hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White guibg=DarkBlue
 hi PmenuSbar                  ctermbg=Cyan            guibg=Cyan
 hi PmenuThumb ctermfg=White                           guifg=White
 
-" set YouCompleteMe global config file
-let g:ycm_global_ycm_extra_conf = '~/dotfiles/ycm_extra_conf.py'
-
-" Disable auto triggering of YCM
-let g:ycm_auto_trigger=0
