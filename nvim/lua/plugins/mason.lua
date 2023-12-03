@@ -13,11 +13,15 @@ return {
             -- NOTE: we specify the plugins by LSP name, _not_ package name.
             --  e.g. the "julia-lsp" package provides the "julials" language server.
             require("mason-lspconfig").setup {
-                ensure_installed = { "julials" }
+                ensure_installed = { 
+                    "julials",
+                    "lua_ls",
+                }
             }
 
             -- Now we can set up the language servers we want...
             require("lspconfig").julials.setup {}
+            require("lspconfig").lua_ls.setup {}
         end
     }
 }
