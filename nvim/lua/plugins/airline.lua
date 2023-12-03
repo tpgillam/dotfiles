@@ -24,7 +24,7 @@ return {
                 space = ' ',
                 notexists = 'Ɇ',
                 whitespace = 'Ξ',
-                keymap = 'Layout:',  -- Unused, but this is the default
+                keymap = 'Layout:', -- Unused, but this is the default
             }
 
             vim.g.airline_theme = "bubblegum"

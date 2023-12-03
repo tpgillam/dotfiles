@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 
 -- Packages should be initialised _after_ remapping the <leader>
 require("lazy").setup(
-    "plugins",  -- This will load all files in the `plugins` module.
+    "plugins", -- This will load all files in the `plugins` module.
     {
         -- Make it easier to see the edge of the Lazy plugin manager.
         ui = { border = "double" }
@@ -35,13 +35,13 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 
 -- Keymappings
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
-vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)  -- Show Lazy manager
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)               -- Show explorer
+vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)              -- Show Lazy manager
 
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)  -- See more about diagnostics
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)  -- Autoformat with LSP
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)  -- Go to definition
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation)  -- Go to implementation
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float) -- See more about diagnostics
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)        -- Autoformat with LSP
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)           -- Go to definition
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)       -- Go to implementation
 -- NOTE: There are other LSP actions that we might want to map, e.g.
 --  - lsp.buf.signature_help
 --  - lsp.buf.rename

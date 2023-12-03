@@ -42,9 +42,8 @@ return {
                 }
             ),
             completion = {
-                autocomplete = false  -- Don't show the completion menu unless triggered.
+                autocomplete = false -- Don't show the completion menu unless triggered.
             },
         })
     end
 }
-
