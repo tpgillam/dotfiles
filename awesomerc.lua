@@ -256,6 +256,9 @@ globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+") end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-") end),
     awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end),
+    -- This requires that `scrot` and `xclip` have been installed.
+    --  It takes a screenshot of the snippet that the user selects, and puts it onto the X11 clipboard.
+    awful.key({ modkey, "Shift" }, "s", function () awful.util.spawn_with_shell("scrot -s - | xclip -selection clipboard -t image/png") end),
     -- TOM CHANGE END
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
