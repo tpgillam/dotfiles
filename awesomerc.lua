@@ -45,10 +45,16 @@ end
 
 --  TOM CHANGE
 -- {{{ OS level setup
+-- Start a polkit client daemon. Here we choose lxpolkit, which
+-- is part of the LXDE desktop.
+awful.spawn.once("lxpolkit")
+
 -- Set keyboard properties and other such things
 os.execute("xset r rate 220 50")
+-- Start polkit daemon
+
 -- Let's have prettier GTK apps
--- os.execute("gnome-settings-daemon &")
+-- awful.spawn.once("gnome-settings-daemon &")
 -- }}}
 
 -- {{{ Variable definitions
