@@ -16,21 +16,21 @@ end
 # TODO: This would be nicer if templated on the CI plugin type, but then I can't use
 # @plugin, and I'm lazy.
 @plugin struct JuliaFormatterGitHubActions <: Plugin
-    style::String="blue"
-    julia_formatter_toml::String=default_file("JuliaFormatter.toml")
-    julia_formatter_yml::String=default_file("julia_formatter.yml")
+    style::String = "blue"
+    julia_formatter_toml::String = default_file("JuliaFormatter.toml")
+    julia_formatter_yml::String = default_file("julia_formatter.yml")
 end
 
 function PkgTemplates.view(p::JuliaFormatterGitHubActions, t::Template, pkg::AbstractString)
     return Dict("FORMAT_STYLE" => p.style)
 end
 
-function PkgTemplates.hook(p::JuliaFormatterGitHubActions, t::Template, pkg_dir::AbstractString) 
+function PkgTemplates.hook(p::JuliaFormatterGitHubActions, t::Template, pkg_dir::AbstractString)
     # Copy over the workflow file.
     outdir = joinpath(pkg_dir, ".github", "workflows")
     mkpath(outdir)
     cp(p.julia_formatter_yml, joinpath(outdir, "julia_formatter.yml"))
-    
+
     # Generate files.
     pkg = basename(pkg_dir)
     formatter_toml = render_file(p.julia_formatter_toml, combined_view(p, t, pkg), tags(p))
@@ -61,13 +61,13 @@ function tom_template(; dir::Union{Nothing,String}=nothing, julia=v"1.6")
             # Possibly controversially, I think including docs/Manifest.toml is a bad idea
             # - Version constraints should be managed, where necessary, by docs/Project.toml
             # - This avoids commit noise after building documentation locally. 
-            Git(; 
+            Git(;
                 branch="main", ssh=true, ignore=[".DS_Store", "/docs/Manifest.toml"],
             ),
             Codecov(),
             TagBot(),
             CompatHelper(),
-            Documenter{GitHubActions}(; 
+            Documenter{GitHubActions}(;
                 makedocs_kwargs=Dict(:checkdocs => :exports)
             ),
             BlueStyleBadge(),
