@@ -47,6 +47,8 @@ end
 -- {{{ OS level setup
 -- Start a polkit client daemon. Here we choose lxpolkit, which
 -- is part of the LXDE desktop.
+-- This client is the thing that will show a password prompt box when
+-- permissions elevation is required by an application.
 awful.spawn.once("lxpolkit")
 
 -- Set keyboard properties and other such things
