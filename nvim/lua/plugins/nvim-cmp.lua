@@ -1,6 +1,9 @@
 -- nvim-cmp has intelligent autocompletion from one or more "sources".
 --      One such source is the LSP (Language Server Protocol), which lets this
 --      work well with any language which has such integration.
+-- PERF: Enabling this plugin seems to add noticeable input 'judder' (variable input
+--  latency as a function of location in file) when editing small rust files.
+--  Can this be improved?
 return {
     "hrsh7th/nvim-cmp",
     dependencies = {
