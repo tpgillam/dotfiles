@@ -45,10 +45,18 @@ end
 
 --  TOM CHANGE
 -- {{{ OS level setup
+-- Start a polkit client daemon. Here we choose lxpolkit, which
+-- is part of the LXDE desktop.
+-- This client is the thing that will show a password prompt box when
+-- permissions elevation is required by an application.
+awful.spawn.once("lxpolkit")
+
 -- Set keyboard properties and other such things
 os.execute("xset r rate 220 50")
+-- Start polkit daemon
+
 -- Let's have prettier GTK apps
--- os.execute("gnome-settings-daemon &")
+-- awful.spawn.once("gnome-settings-daemon &")
 -- }}}
 
 -- {{{ Variable definitions
@@ -240,9 +248,10 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    -- TOM CHANGE don't change tag when scrolling over the desktop
+    -- awful.button({ }, 4, awful.tag.viewnext),
+    -- awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
