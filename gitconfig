@@ -1,7 +1,6 @@
-# vim: filetype=gitconfig :
 [user]
-	email = tpgillam@googlemail.com
-	name = Tom Gillam
+  email = tpgillam@googlemail.com
+  name = Tom Gillam
 [color]
   ui = true
 [merge]
@@ -11,10 +10,10 @@
 [core]
   excludesfile = ~/.gitignore_global
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [credential]
-	helper = store
+  helper = store
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pull]
-	rebase = false
+  rebase = false
