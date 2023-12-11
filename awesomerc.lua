@@ -45,6 +45,7 @@ end
 
 --  TOM CHANGE
 -- {{{ OS level setup
+
 -- Start a polkit client daemon. Here we choose lxpolkit, which
 -- is part of the LXDE desktop.
 -- This client is the thing that will show a password prompt box when
@@ -53,7 +54,10 @@ awful.spawn.once("lxpolkit")
 
 -- Set keyboard properties and other such things
 os.execute("xset r rate 220 50")
--- Start polkit daemon
+
+-- We need to source xprofile if it exists. As-of Fedora 39, it doesn't get sourced
+-- by GDM after logging into awesome.
+os.execute("[ -f $HOME/.xprofile ] && . $HOME/.xprofile")
 
 -- Let's have prettier GTK apps
 -- awful.spawn.once("gnome-settings-daemon &")
