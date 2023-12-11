@@ -71,6 +71,9 @@ fi
 # Julia development #
 #####################
 
+# Allow as many threads as possible by default
+export JULIA_NUM_THREADS=auto
+
 # Make a julia project in the current directory.
 mkproj() {
     dirname="`pwd`/$1"
