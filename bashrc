@@ -65,6 +65,9 @@ if ! shopt -oq posix; then
   elif [ -f /opt/homebrew/etc/profile.d/bash_completion.sh ]; then
       . /opt/homebrew/etc/profile.d/bash_completion.sh
   fi
+
+  # Add support for julia completion.
+  . ~/dotfiles/julia-completions/julia-completion.bash
 fi
 
 #####################

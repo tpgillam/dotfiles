@@ -24,7 +24,7 @@
     
 
 - shell:
-  # Update the dotbot module
+  # Update all git submodules (including the dotbot module)
   - [git submodule update --init --recursive, Installing submodules]
 
   # Set up Vundle & plugins.
