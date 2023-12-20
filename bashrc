@@ -77,6 +77,10 @@ fi
 # Allow as many threads as possible by default
 export JULIA_NUM_THREADS=auto
 
+# Always look in the current or parent directories for a `Project.toml`
+# by default.
+export JULIA_PROJECT=@.
+
 # Make a julia project in the current directory.
 mkproj() {
     dirname="`pwd`/$1"
