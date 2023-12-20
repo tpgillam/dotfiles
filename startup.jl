@@ -3,7 +3,7 @@ import Pkg
 
 let
     # Ensure that all of these packages are installed, and are `using`ed.
-    packages = ("BenchmarkTools", "JET", "OhMyREPL", "Revise")
+    packages = ("BenchmarkTools", "OhMyREPL", "Revise")
     for package in packages
         if isnothing(Base.find_package(package)) 
             # Note that we want to install in the context of the _global_ project,
