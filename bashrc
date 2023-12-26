@@ -5,8 +5,8 @@
 # Awesome vi like bash line editing
 set -o vi
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Nice shell prompt, and support resizing...
 
