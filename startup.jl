@@ -2,7 +2,7 @@
 import Pkg
 
 let
-    # Ensure that all of these packages are installed, and are `using`ed.
+    # Ensure that all of these packages are installed.
     packages = ("BenchmarkTools", "OhMyREPL", "Revise", "TestEnv")
     for package in packages
         if isnothing(Base.find_package(package)) 
@@ -15,10 +15,18 @@ let
             Pkg.add(package)
             Pkg.activate(project_path)
         end
-        @eval using $(Symbol(package))
     end
 
-    # Don't use rainbow brackets in OhMyREPL, and don't autcomplete.
-    OhMyREPL.enable_pass!("RainbowBrackets", false)
-    OhMyREPL.enable_autocomplete_brackets(false)
+    if isinteractive()
+        # Revise lets us reload changes made to packages that we are using in
+        # the interactive session.
+        using Revise
+
+        # OhMyREPL gives us nicer incremental search and other interactive features.
+        using OhMyREPL
+
+        # Don't use rainbow brackets in OhMyREPL, and don't autcomplete.
+        OhMyREPL.enable_pass!("RainbowBrackets", false)
+        OhMyREPL.enable_autocomplete_brackets(false)
+    end
 end
