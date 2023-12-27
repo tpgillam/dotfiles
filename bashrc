@@ -161,7 +161,7 @@ makedocs() {
 # Run Julia tests for the current package.
 # This should work when run from any subdirectory of that package.
 runtest() {
-    julia --startup-file=no --project=@. -e '
+    julia $1 --startup-file=no --project=@. -e '
         using Pkg
         Pkg.test()'
 }
