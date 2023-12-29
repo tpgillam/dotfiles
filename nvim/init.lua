@@ -41,6 +41,7 @@ vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)              -- Show Lazy manager
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float) -- See more about diagnostics
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)        -- Autoformat with LSP
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)                -- LSP hover action
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)   -- LSP code action
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)           -- Go to definition
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)       -- Go to implementation
 
