@@ -275,9 +275,21 @@ globalkeys = gears.table.join(
     -- TOM CHANGE END
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+    -- TOM CHANGE BEGIN: don't wrap around tags
+    awful.key({ modkey,           }, "Left",   function()
+        local screen = awful.screen.focused()
+        if screen.selected_tag ~= screen.tags[1] then
+            awful.tag.viewprev()
+        end
+    end,
               {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+    awful.key({ modkey,           }, "Right",  function ()
+        local screen = awful.screen.focused()
+        if screen.selected_tag ~= screen.tags[9] then
+            awful.tag.viewnext()
+        end
+    end,
+    -- TOM CHANGE END
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
