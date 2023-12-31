@@ -20,10 +20,10 @@ let
     if isinteractive()
         # Revise lets us reload changes made to packages that we are using in
         # the interactive session.
-        using Revise
+        import Revise
 
         # OhMyREPL gives us nicer incremental search and other interactive features.
-        using OhMyREPL
+        import OhMyREPL
 
         # Don't use rainbow brackets in OhMyREPL, and don't autcomplete.
         OhMyREPL.enable_pass!("RainbowBrackets", false)
