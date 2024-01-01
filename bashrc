@@ -105,6 +105,9 @@ mkdatedproj() {
 
 # Make a new Julia package in .dev with my template and switch to it.
 # The only argument is the package name.
+# NOTE: the "documenter key" that is generated is used by various GitHub actions workflows.
+#   It doesn't _have_ to be run now, and re-running the last few lines can be done at a later
+#   stage if desired.
 mkpackage() {
     julia --startup-file=no --project=$(mktemp -d) -e '
         using Pkg
