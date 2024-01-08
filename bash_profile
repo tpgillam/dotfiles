@@ -20,10 +20,6 @@ export PATH="/opt/homebrew/opt/python3/libexec/bin/:$PATH"
 # VSCode
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
-# Add SSH identity
-# eval `ssh-agent` &> /dev/null  # iff ssh-agent doesn't run by default
-ssh-add -q
-
 
 ##################
 # source .bashrc #

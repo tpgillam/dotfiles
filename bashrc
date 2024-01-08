@@ -70,6 +70,20 @@ if ! shopt -oq posix; then
   . ~/dotfiles/julia-completions/julia-completion.bash
 fi
 
+
+#############
+# SSH agent #
+#############
+
+# Start ssh-agent if it is not already running
+if [ -z "$(pgrep ssh-agent)" ]; then
+    eval $(ssh-agent) &> /dev/null
+fi
+
+# Add SSH identity
+ssh-add -q
+
+
 #####################
 # Julia development #
 #####################
