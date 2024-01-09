@@ -95,6 +95,10 @@ export JULIA_NUM_THREADS=auto
 # by default.
 export JULIA_PROJECT=@.
 
+# This is required when cross-building for MacOS to indicate to BinaryBuilder.jl
+# that I accept Apple's terms.
+export BINARYBUILDER_AUTOMATIC_APPLE=true
+
 # Make a julia project in the current directory.
 mkproj() {
     dirname="`pwd`/$1"
@@ -150,7 +154,7 @@ dev() {
 
         # Get the location of the package that we just got -- activate and instantiate it.
         package_dir = joinpath(Pkg.devdir(), only(keys(Pkg.project().dependencies)))
-        
+
         Pkg.activate(package_dir)
         Pkg.instantiate()
 
