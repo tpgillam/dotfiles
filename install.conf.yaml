@@ -34,3 +34,5 @@
   # we manage to actually install the plugins in this step.
   - [command vim --clean '+source ~/.vimrc' +PluginInstall +qall]
     
+  # Neovim: Lazy.nvim sync
+  - [command nvim --headless "+Lazy! sync" +qa]
