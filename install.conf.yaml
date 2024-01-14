@@ -6,7 +6,7 @@
 - clean: ["~"]
 
 - link:
-    ~/.config/alacritty.yml: alacritty.yml
+    ~/.config/alacritty.toml: alacritty.toml
     ~/.config/awesome/rc.lua: awesomerc.lua
     ~/.config/karabiner/karabiner.json: karabiner.json
     ~/.config/nvim: nvim

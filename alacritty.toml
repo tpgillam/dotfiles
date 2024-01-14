@@ -1,0 +1,65 @@
+# Colors (based on iTerm 2 default theme)
+[colors.bright]
+black = "#565656"
+blue = "#49a4f8"
+cyan = "#99faf2"
+green = "#c0e17d"
+magenta = "#a47de9"
+red = "#ec5357"
+white = "#ffffff"
+yellow = "#f9da6a"
+
+[colors.normal]
+black = "#2e2e2e"
+blue = "#47a0f3"
+cyan = "#64dbed"
+green = "#abe047"
+magenta = "#7b5cb0"
+red = "#eb4129"
+white = "#e5e9f0"
+yellow = "#f6c744"
+
+[colors.primary]
+background = "#101421"
+foreground = "#fffbf6"
+
+[env]
+# This seems to be required to get colours rendering properly
+# within tmux. See some discussion here:
+#   https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+#   https://github.com/tmux/tmux/issues/696
+#
+# The other changes suggested to tmux.conf in that second link were not
+# necessary after changing this.
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "JuliaMono Nerd Font Mono"
+
+# Settings for Windows + WSL
+
+# [shell]
+# program = "ubuntu"
+
+# (( XXX: history below is still in old yaml format))
+# key_bindings:
+#   # Allow sending Ctrl-Space to the terminal
+#   - { key: Space, mods: Control, chars: "\x00" }
+    
+
+# Settings that (used to be) needed on MacOS, but not any more
+
+# key_bindings:
+#   # This is needed to be able to type "#" on MacOS...
+#   # See: https://github.com/alacritty/alacritty/issues/1073
+#   - { key: Key3,     mods: Alt,     chars: "#"                        }
+#
+# Alternatively, switching this to 'false' seems to work too. No negative impact found so far...
+# Send ESC (\x1b) before characters when alt is pressed.
+# NB 2023-04-01: apparently this option has been removed, and is always set to true.
+#   Typing "#" now seems to work out-of-the-box in any case.
+# alt_send_esc: false
+
