@@ -99,6 +99,13 @@ export JULIA_PROJECT=@.
 # that I accept Apple's terms.
 export BINARYBUILDER_AUTOMATIC_APPLE=true
 
+# Format file(s) with JuliaFormatter.jl
+juliaformat() {
+    julia -e '
+        using JuliaFormatter
+        format("'$1'")'
+}
+
 # Make a julia project in the current directory.
 mkproj() {
     dirname="`pwd`/$1"
