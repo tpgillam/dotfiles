@@ -34,5 +34,6 @@
   # we manage to actually install the plugins in this step.
   - [command vim --clean '+source ~/.vimrc' +PluginInstall +qall]
     
-  # Neovim: Lazy.nvim sync
-  - [command nvim --headless "+Lazy! sync" +qa]
+  # Neovim: Lazy.nvim 'restore' will ensure the state of neovim matches the lock file
+  # in this repo.
+  - [command nvim --headless "+Lazy! restore" +qa]
