@@ -8,7 +8,9 @@
 - link:
     ~/.config/alacritty.toml: alacritty.toml
     ~/.config/awesome/rc.lua: awesomerc.lua
-    ~/.config/karabiner/karabiner.json: karabiner.json
+    ~/.config/karabiner/karabiner.json: 
+      path: karabiner.json
+      if: '[[ "$(uname)" == "Darwin" ]]'  # MacOS only
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
@@ -21,6 +23,13 @@
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
     ~/.vimrc: vimrc
+    # Poetry configuration goes into a different place on MacOS than Linux...
+    ~/.config/pypoetry/config.toml:
+      path: pypoetry_config.toml
+      if: '[[ "$(uname)" != "Darwin" ]]'
+    ~/Library/Application Support/pypoetry/config.toml:
+      path: pypoetry_config.toml
+      if: '[[ "$(uname)" == "Darwin" ]]'
     
 
 - shell:
