@@ -70,6 +70,14 @@ if ! shopt -oq posix; then
   . ~/dotfiles/julia-completions/julia-completion.bash
 fi
 
+################
+# fuzzy filing #
+################
+fcd() {
+    # Note that we use NUL termination everywhere so that we can handle directories
+    # whose names end with a space.
+    local selected_dir=$(find . -type d 2>/dev/null | fzf) && cd "$selected_dir" || return 1
+}
 
 #############
 # SSH agent #
@@ -108,7 +116,7 @@ juliaformat() {
 
 # Make a julia project in the current directory.
 mkproj() {
-    dirname="`pwd`/$1"
+    local dirname="`pwd`/$1"
     (
         set -e
         echo "Making $dirname"
