@@ -97,9 +97,9 @@ ssh-add -q
 ######################
 
 function pycheck() {
-    poetry run ruff check --fix "$1"
-    poetry run ruff format "$1"
-    poetry run pyright "$1"
+    poetry run ruff format "$@"
+    poetry run ruff check --fix "$@"
+    poetry run pyright "$@"
 }
 
 
