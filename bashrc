@@ -92,6 +92,17 @@ fi
 ssh-add -q
 
 
+######################
+# Python development #
+######################
+
+function pycheck() {
+    poetry run ruff check --fix "$1"
+    poetry run ruff format "$1"
+    poetry run pyright "$1"
+}
+
+
 #####################
 # Julia development #
 #####################
