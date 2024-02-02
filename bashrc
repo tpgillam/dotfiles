@@ -73,6 +73,10 @@ fi
 ################
 # fuzzy filing #
 ################
+
+# Use the bash configuration file if it exists.
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 fcd() {
     # Note that we use NUL termination everywhere so that we can handle directories
     # whose names end with a space.
