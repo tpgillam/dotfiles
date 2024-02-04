@@ -18,6 +18,7 @@ Other tools that might be useful:
 - tree
 - Rust via [rustup](https://rustup.rs/)
 - Julia via [juliaup](https://github.com/JuliaLang/juliaup)
+- Python via [pyenv](https://github.com/pyenv/pyenv) and [poetry](https://python-poetry.org/docs/#installing-with-the-official-installer)
 
 ## Configuration files
 
@@ -39,3 +40,9 @@ Need to install [rustup](https://rustup.rs/), and then `rust-analyzer` with:
 ```
 rustup component add rust-analyzer
 ```
+
+### Python + vim integration
+For a sensible experience, work in a python virtual environment managed e.g. by poetry.
+The environment _must_ be activated before starting neovim, otherwise pyright will complain about missing imports.
+
+Ruff 'fix all' is registered as a code action (so do `<leader>a` in the desired buffer and follow instructions).
