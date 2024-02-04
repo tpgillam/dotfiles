@@ -9,6 +9,8 @@ return {
             ensure_installed = {
                 "julials",
                 "lua_ls",
+                "ruff_lsp",
+                "pyright"
             }
         }
 
@@ -27,5 +29,7 @@ return {
                 }
             }
         }
+        require("lspconfig").ruff_lsp.setup {}
+        require("lspconfig").pyright.setup {}
     end
 }
