@@ -46,3 +46,11 @@ For a sensible experience, work in a python virtual environment managed e.g. by 
 The environment _must_ be activated before starting neovim, otherwise pyright will complain about missing imports.
 
 Ruff 'fix all' is registered as a code action (so do `<leader>a` in the desired buffer and follow instructions).
+
+### fzf
+[fzf](https://github.com/junegunn/fzf) is a fuzzy finder that can integrate with the shell.
+Ideally, install it and create `~/.fzf.bash` that will source the completions file, e.g.
+```bash
+. /usr/share/fzf/shell/key-bindings.bash
+```
+(naturally this path will be OS dependent).
