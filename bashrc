@@ -100,6 +100,9 @@ ssh-add -q
 # Python development #
 ######################
 
+# Initialise pyenv if it is available on the path.
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
 function pycheck() {
     poetry run ruff format "$@"
     poetry run ruff check --fix "$@"
