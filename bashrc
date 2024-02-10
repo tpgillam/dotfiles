@@ -127,9 +127,12 @@ export BINARYBUILDER_AUTOMATIC_APPLE=true
 
 # Format file(s) with JuliaFormatter.jl
 juliaformat() {
-    julia -e '
+    local code='
         using JuliaFormatter
-        format("'$1'")'
+        for filename in ARGS
+            format(filename)
+        end'
+    julia -e "$code" "$@"
 }
 
 # Make a julia project in the current directory.
