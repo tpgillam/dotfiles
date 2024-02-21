@@ -27,6 +27,7 @@
   "vim-airline": { "branch": "master", "commit": "20a49bd494a87a40b815289693c8b7505f0074c0" },
   "vim-airline-themes": { "branch": "master", "commit": "a9aa25ce323b2dd04a52706f4d1b044f4feb7617" },
   "vim-commentary": { "branch": "master", "commit": "f67e3e67ea516755005e6cccb178bc8439c6d402" },
+  "vim-elmer": { "branch": "master", "commit": "1b62e466248104630f885889a4784051e5c4e2ba" },
   "vim-fugitive": { "branch": "master", "commit": "9f92ff14d9d1169e08f197a2250fcaea88e9c767" },
   "vim-vsnip": { "branch": "master", "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9" }
 }
