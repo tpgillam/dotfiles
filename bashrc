@@ -129,8 +129,16 @@ export BINARYBUILDER_AUTOMATIC_APPLE=true
 juliaformat() {
     local code='
         using JuliaFormatter
-        for filename in ARGS
-            format(filename)
+        filenames = if isempty(ARGS)
+            split(String(read(`find -type f -name \*.jl`)))
+        else
+            ARGS
+        end
+        for filename in filenames
+            did_change = !format(filename)
+            if did_change
+                println("Altered: $filename")
+            end
         end'
     julia -e "$code" "$@"
 }
