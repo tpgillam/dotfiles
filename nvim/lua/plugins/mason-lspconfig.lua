@@ -10,7 +10,8 @@ return {
                 "julials",
                 "lua_ls",
                 "ruff_lsp",
-                "pyright"
+                "pyright",
+                "taplo"
             }
         }
 
@@ -31,5 +32,6 @@ return {
         }
         require("lspconfig").ruff_lsp.setup {}
         require("lspconfig").pyright.setup {}
+        require("lspconfig").taplo.setup {}
     end
 }
