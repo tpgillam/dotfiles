@@ -19,7 +19,6 @@
     ~/.gitignore_global: gitignore_global
     ~/.julia/config/startup.jl: startup.jl
     ~/.ssh/config: ssh_config
-    ~/.taskrc: taskrc
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
     ~/.vimrc: vimrc
