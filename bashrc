@@ -68,6 +68,11 @@ if ! shopt -oq posix; then
 
   # Add support for julia completion.
   . ~/dotfiles/julia-completions/julia-completion.bash
+
+  # Add GitHub CLI completion, if available.
+  if [ -x $(which gh) ]; then
+      eval "$(gh completion -s bash)"
+  fi
 fi
 
 ################
@@ -130,7 +135,7 @@ juliaformat() {
     local code='
         using JuliaFormatter
         filenames = if isempty(ARGS)
-            split(String(read(`find -type f -name \*.jl`)))
+            split(String(read(`find . -type f -name \*.jl`)))
         else
             ARGS
         end
