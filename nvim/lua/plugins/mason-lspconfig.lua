@@ -30,7 +30,20 @@ return {
                 }
             }
         }
-        require("lspconfig").ruff_lsp.setup {}
+
+        -- The options here will use `python` and `ruff` versions that are on the
+        -- current PATH. I am generally assuming that I'll be running vim in the
+        -- context of a virtualenv anyway, since this is required for pyright to
+        -- work properly.
+        require("lspconfig").ruff_lsp.setup {
+            init_options = {
+                settings = {
+                    interpreter = "python",
+                    path = { "ruff" }
+                }
+            }
+        }
+
         require("lspconfig").pyright.setup {}
         require("lspconfig").taplo.setup {}
     end
