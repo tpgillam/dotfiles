@@ -38,7 +38,7 @@ return {
         require("lspconfig").ruff_lsp.setup {
             init_options = {
                 settings = {
-                    interpreter = "python",
+                    interpreter = { "python" },
                     path = { "ruff" }
                 }
             }
