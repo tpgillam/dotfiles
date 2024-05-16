@@ -11,6 +11,20 @@ require("lazy").setup(
     }
 )
 
+-- Integrate 'ruff check' with quickfix
+local function run_ruff_check_quickfix()
+    -- Using the -q option so that we only receive the errors
+    local output = vim.fn.system('ruff check -q')
+    if vim.v.shell_error ~= 0 then
+        vim.fn.setqflist({}, 'r', { title = 'ruff check', lines = vim.fn.split(output, '\n') })
+        vim.cmd('copen')
+    else
+        print("All checks passed!")
+    end
+end
+
+vim.api.nvim_create_user_command('RuffCheck', run_ruff_check_quickfix, {})
+
 -- Options
 
 -- We have to enable `termguicolors` for certain colorschemes to work correctly
@@ -49,3 +63,5 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation)                           
 --  - lsp.buf.signature_help
 --  - lsp.buf.rename
 --  - ...
+
+vim.keymap.set("n", "<leader>rc", ":RuffCheck<CR>", { noremap = true, silent = true })
