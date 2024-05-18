@@ -73,6 +73,11 @@ if ! shopt -oq posix; then
   if [ -x $(which gh) ]; then
       eval "$(gh completion -s bash)"
   fi
+
+  # Add Rye completion, if available.
+  if [ -x $(which rye) ]; then
+      eval "$(rye self completion -s bash)"
+  fi
 fi
 
 ################
