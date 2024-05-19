@@ -40,11 +40,21 @@ alias vimdiff='nvim -d'
 # command.
 unset command_not_found_handle
 
+# Return 1 iff the given name exists and is executable.
+_is_executable() {
+    local path=$(command -v "$1")
+    if [ -n "$path" ] && [ -x "$path" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 #########################################
 # LS colours — if `dircolors` available #
 #########################################
 
-if [ -x $(which dircolors) ]; then
+if _is_executable dircolors; then
     # These are for giving nicer colours to `ls`
     d=~/.LS_COLORS
     test -r $d && eval "$(dircolors $d)"
@@ -70,12 +80,12 @@ if ! shopt -oq posix; then
   . ~/dotfiles/julia-completions/julia-completion.bash
 
   # Add GitHub CLI completion, if available.
-  if [ -x $(which gh) ]; then
+  if _is_executable gh; then
       eval "$(gh completion -s bash)"
   fi
 
   # Add Rye completion, if available.
-  if [ -x $(which rye) ]; then
+  if _is_executable rye; then
       eval "$(rye self completion -s bash)"
   fi
 fi
@@ -111,7 +121,9 @@ ssh-add -q
 ######################
 
 # Initialise pyenv if it is available on the path.
-command -v pyenv >/dev/null && eval "$(pyenv init -)"
+if _is_executable pyenv; then
+    eval "$(pyenv init -)"
+fi
 
 function pycheck() {
     poetry run ruff format "$@"
