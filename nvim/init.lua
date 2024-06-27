@@ -11,10 +11,12 @@ require("lazy").setup(
     }
 )
 
+
 -- Integrate 'ruff check' with quickfix
 local function run_ruff_check_quickfix()
     -- Using the -q option so that we only receive the errors
-    local output = vim.fn.system('ruff check -q')
+    local ruff_path = require("local_executables").find_executable_prefer_non_mason("ruff")
+    local output = vim.fn.system(ruff_path .. ' check -q')
     if vim.v.shell_error ~= 0 then
         vim.fn.setqflist({}, 'r', { title = 'ruff check', lines = vim.fn.split(output, '\n') })
         vim.cmd('copen')
