@@ -63,7 +63,7 @@ return {
             ensure_installed = {
                 "julials",
                 "lua_ls",
-                "ruff_lsp",
+                "ruff",
                 "pyright",
                 "taplo"
             }
@@ -92,7 +92,7 @@ return {
         -- properly.
         local path_python = _find_executable_prefer_non_mason("python") or "python"
         local path_ruff = _find_executable_prefer_non_mason("ruff") or "ruff"
-        require("lspconfig").ruff_lsp.setup {
+        require("lspconfig").ruff.setup {
             init_options = {
                 settings = {
                     interpreter = { path_python },
