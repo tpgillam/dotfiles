@@ -60,6 +60,7 @@ vim.keymap.set("n", "gh", vim.lsp.buf.hover)                                    
 vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)                            -- LSP code action
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)                                    -- Go to definition
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)                                -- Go to implementation
+vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)                                 -- Rename symbol
 
 -- NOTE: There are other LSP actions that we might want to map, e.g.
 --  - lsp.buf.signature_help
