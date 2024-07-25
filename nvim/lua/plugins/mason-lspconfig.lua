@@ -39,7 +39,7 @@ return {
         local moo = require("local_executables")
         local path_ruff = moo.find_executable_prefer_non_mason("ruff") or "ruff"
         require("lspconfig").ruff.setup {
-            cmd = { path_ruff, "server", "--preview" },
+            cmd = { path_ruff, "server" },
         }
 
         local path_pyright = moo.find_executable_prefer_non_mason("pyright-langserver") or "pyright-langserver"
