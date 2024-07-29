@@ -4,3 +4,15 @@ Host oracc
     Port 22000
     LocalForward 8051 localhost:8051
 
+Host ws0
+    HostName ws0.int.monumo.com
+Host ws1
+    HostName ws1.int.monumo.com
+Host ws2
+    HostName ws2.int.monumo.com
+Host ws3
+    HostName ws3.int.monumo.com
+Host frodo
+    HostName frodo.int.monumo.com
+Host bilbo
+    HostName bilbo.int.monumo.com

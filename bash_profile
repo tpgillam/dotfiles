@@ -14,7 +14,7 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 # I would like to use Homebrew's version of python please
 export PATH="/opt/homebrew/opt/python3/libexec/bin/:$PATH"
 
-# Rust installation
+# Rust & uv installation
 . "$HOME/.cargo/env"
 
 # VSCode
