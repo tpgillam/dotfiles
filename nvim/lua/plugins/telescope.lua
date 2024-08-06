@@ -22,6 +22,20 @@ return {
                     hidden = true,
                     no_ignore = true
                 }
+            },
+            defaults = {
+                vimgrep_arguments = {
+                    "rg",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+                    -- Custom arguments follow!
+                    -- Also search hidden files and folders.
+                    "--hidden",
+                }
             }
         }
     end
