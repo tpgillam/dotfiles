@@ -33,8 +33,9 @@ return {
                     "--column",
                     "--smart-case",
                     -- Custom arguments follow!
-                    -- Also search hidden files and folders.
+                    -- Also search hidden files and folders, except `.git`.
                     "--hidden",
+                    "--glob", "!.git/**",
                 }
             }
         }
