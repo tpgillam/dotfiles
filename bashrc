@@ -88,6 +88,11 @@ if ! shopt -oq posix; then
   if _is_executable rye; then
       eval "$(rye self completion -s bash)"
   fi
+
+  # Add uv copmletion, if available.
+  if _is_executable uv; then
+      eval "$(uv generate-shell-completion bash)"
+  fi
 fi
 
 ################
