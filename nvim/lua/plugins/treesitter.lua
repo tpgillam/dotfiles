@@ -10,6 +10,7 @@ return {
                 "c",
                 "html",
                 "javascript",
+                "json",
                 "julia",
                 "lua",
                 "markdown",
