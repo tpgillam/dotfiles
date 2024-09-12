@@ -53,12 +53,21 @@ end
 awful.spawn.once("lxpolkit")
 
 -- Set keyboard properties and other such things
-os.execute("xset r rate 220 50")  -- repeat rate
-os.execute("xset m 0 0 ")  -- disable mouse acceleration
+awful.spawn.with_shell("xset r rate 220 50")  -- repeat rate
+
+-- Disable mouse acceleration, assuming that libinput is used.
+awful.spawn.with_shell([[
+for id in $(xinput list --id-only); do
+  if xinput list-props $id | grep -q "libinput Accel Profile Enabled"; then
+    xinput set-prop $id "libinput Accel Profile Enabled" 0, 1
+    xinput set-prop $id "libinput Accel Speed" 0
+  fi
+done
+]])
 
 -- We need to source xprofile if it exists. As-of Fedora 39, it doesn't get sourced
 -- by GDM after logging into awesome.
-os.execute("[ -f $HOME/.xprofile ] && . $HOME/.xprofile")
+awful.spawn.with_shell("[ -f $HOME/.xprofile ] && . $HOME/.xprofile")
 
 -- Let's have prettier GTK apps
 -- awful.spawn.once("gnome-settings-daemon &")
