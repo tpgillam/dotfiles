@@ -12,20 +12,37 @@ require("lazy").setup(
 )
 
 
+local function _quickfix(title, output)
+    local lines = vim.tbl_map(vim.trim, vim.fn.split(output, '\n'))
+    vim.fn.setqflist({}, 'r', { title = title, lines = lines })
+    if #lines > 0 then
+        vim.cmd('copen')
+    else
+        print(title .. ": all checks passed!")
+    end
+end
+
 -- Integrate 'ruff check' with quickfix
 local function run_ruff_check_quickfix()
     -- Using the -q option so that we only receive the errors
     local ruff_path = require("local_executables").find_executable_prefer_non_mason("ruff")
     local output = vim.fn.system(ruff_path .. ' check -q')
-    if vim.v.shell_error ~= 0 then
-        vim.fn.setqflist({}, 'r', { title = 'ruff check', lines = vim.fn.split(output, '\n') })
-        vim.cmd('copen')
-    else
-        print("All checks passed!")
-    end
+    _quickfix('ruff check', output)
 end
 
 vim.api.nvim_create_user_command('RuffCheck', run_ruff_check_quickfix, {})
+
+-- Integrate 'pyright' with quickfix
+local function run_pyright_quickfix()
+    -- Using the -q option so that we only receive the errors
+    local pyright_path = require("local_executables").find_executable_prefer_non_mason("pyright")
+    -- Select only those lines of output that match '<line number>:<character number>',
+    -- since pyright also includes "header" lines, one per file
+    local output = vim.fn.system(pyright_path .. ' | grep "[0-9]:[0-9]"')
+    _quickfix('pyright', output)
+end
+
+vim.api.nvim_create_user_command('Pyright', run_pyright_quickfix, {})
 
 -- Options
 
@@ -68,3 +85,4 @@ vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)                            
 --  - ...
 
 vim.keymap.set("n", "<leader>rc", ":RuffCheck<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>py", ":Pyright<CR>", { noremap = true, silent = true })
