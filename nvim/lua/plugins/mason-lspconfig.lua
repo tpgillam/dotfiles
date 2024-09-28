@@ -46,6 +46,10 @@ return {
         require("lspconfig").pyright.setup {
             cmd = { path_pyright, "--stdio" }
         }
-        require("lspconfig").taplo.setup {}
+        require("lspconfig").taplo.setup {
+            -- Customisation to allow taplo to work outside of git repositories.
+            --  See: https://www.reddit.com/r/neovim/comments/1fkprp5/how_to_properly_setup_lspconfig_for_toml_files/
+            root_dir = require('lspconfig.util').root_pattern('*.toml', '.git')
+        }
     end
 }
