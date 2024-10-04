@@ -17,7 +17,7 @@ return {
                 "python",
                 "rust",
                 "vim",
-                "vimdoc",
+                -- "vimdoc",  -- Seems buggy right now, so leave disabled.
             },
             sync_install = false,
             highlight = { enable = true },
