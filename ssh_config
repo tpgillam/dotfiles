@@ -1,18 +1,18 @@
-Host oracc
-    HostName oracc.ub.uni-muenchen.de
-    User tgillam
-    Port 22000
-    LocalForward 8051 localhost:8051
-
 Host ws0
     HostName ws0.int.monumo.com
+    User tom
 Host ws1
     HostName ws1.int.monumo.com
+    User tom
 Host ws2
     HostName ws2.int.monumo.com
+    User tom
 Host ws3
     HostName ws3.int.monumo.com
+    User tom
 Host frodo
     HostName frodo.int.monumo.com
+    User tom
 Host bilbo
     HostName bilbo.int.monumo.com
+    User tom

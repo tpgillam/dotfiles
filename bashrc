@@ -96,6 +96,7 @@ if ! shopt -oq posix; then
   # Add uv copmletion, if available.
   if _is_executable uv; then
       eval "$(uv generate-shell-completion bash)"
+      eval "$(uvx --generate-shell-completion bash)"
   fi
 fi
 
