@@ -34,6 +34,10 @@ alias grep='grep --color=auto'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 
+# Work around glow not showing colours when using tmux.
+#   I think this bug started in glow 2.0.0, but hard to be sure.
+alias glow='CLICOLOR_FORCE=1 glow'
+
 # Do not make my terminal hang if I mistype things, since that happens
 # very frequently. By default many modern distros will set this to
 # look in the package manager for a package that might provide the
