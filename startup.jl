@@ -29,4 +29,11 @@ let
         OhMyREPL.enable_pass!("RainbowBrackets", false)
         OhMyREPL.enable_autocomplete_brackets(false)
     end
+
+    atreplinit() do repl
+        if VERSION >= v"1.11.0-0"
+            # Please no autocomplete suggestions. Thank you.
+            repl.options.hint_tab_completes = false
+        end
+    end
 end
