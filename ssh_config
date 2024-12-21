@@ -16,3 +16,6 @@ Host frodo
 Host bilbo
     HostName bilbo.int.monumo.com
     User tom
+Host arwen
+    HostName arwen.int.monumo.com
+    User tom
