@@ -34,13 +34,8 @@ return {
         -- The options here will use `python` and `ruff` versions that are on the
         -- current PATH; I'm happy to assume that I'll always be working in the context
         -- of a uv-managed environment.
-        require("lspconfig").ruff.setup {
-            cmd = { "uv", "run", "ruff", "server" },
-        }
-
-        require("lspconfig").pyright.setup {
-            cmd = { "uv", "run", "pyright" },
-        }
+        require("lspconfig").ruff.setup { cmd = { "uv", "run", "ruff", "server" } }
+        require("lspconfig").pyright.setup { cmd = { "uv", "run", "pyright-langserver", "--stdio" } }
         require("lspconfig").taplo.setup {
             -- Customisation to allow taplo to work outside of git repositories.
             --  See: https://www.reddit.com/r/neovim/comments/1fkprp5/how_to_properly_setup_lspconfig_for_toml_files/
