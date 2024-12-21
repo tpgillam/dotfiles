@@ -25,8 +25,7 @@ end
 -- Integrate 'ruff check' with quickfix
 local function run_ruff_check_quickfix()
     -- Using the -q option so that we only receive the errors
-    local ruff_path = require("local_executables").find_executable_prefer_non_mason("ruff")
-    local output = vim.fn.system(ruff_path .. ' check -q')
+    local output = vim.fn.system('uv run ruff check -q')
     _quickfix('ruff check', output)
 end
 
@@ -34,11 +33,9 @@ vim.api.nvim_create_user_command('RuffCheck', run_ruff_check_quickfix, {})
 
 -- Integrate 'pyright' with quickfix
 local function run_pyright_quickfix()
-    -- Using the -q option so that we only receive the errors
-    local pyright_path = require("local_executables").find_executable_prefer_non_mason("pyright")
     -- Select only those lines of output that match '<line number>:<character number>',
     -- since pyright also includes "header" lines, one per file
-    local output = vim.fn.system(pyright_path .. ' | grep "[0-9]:[0-9]"')
+    local output = vim.fn.system('uv run pyright | grep "[0-9]:[0-9]"')
     _quickfix('pyright', output)
 end
 

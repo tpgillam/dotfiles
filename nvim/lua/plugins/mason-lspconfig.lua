@@ -36,15 +36,12 @@ return {
         -- generally assuming that I'll be running vim in the context of a
         -- virtualenv anyway, since this is required for pyright to work
         -- properly.
-        local moo = require("local_executables")
-        local path_ruff = moo.find_executable_prefer_non_mason("ruff") or "ruff"
         require("lspconfig").ruff.setup {
-            cmd = { path_ruff, "server" },
+            cmd = { "uv", "run", "ruff", "server" },
         }
 
-        local path_pyright = moo.find_executable_prefer_non_mason("pyright-langserver") or "pyright-langserver"
         require("lspconfig").pyright.setup {
-            cmd = { path_pyright, "--stdio" }
+            cmd = { "uv", "run", "pyright" },
         }
         require("lspconfig").taplo.setup {
             -- Customisation to allow taplo to work outside of git repositories.
