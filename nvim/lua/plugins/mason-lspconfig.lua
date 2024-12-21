@@ -32,10 +32,8 @@ return {
         }
 
         -- The options here will use `python` and `ruff` versions that are on the
-        -- current PATH; but ideally not in vim's "mason" directory. I am
-        -- generally assuming that I'll be running vim in the context of a
-        -- virtualenv anyway, since this is required for pyright to work
-        -- properly.
+        -- current PATH; I'm happy to assume that I'll always be working in the context
+        -- of a uv-managed environment.
         require("lspconfig").ruff.setup {
             cmd = { "uv", "run", "ruff", "server" },
         }
