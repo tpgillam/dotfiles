@@ -22,13 +22,6 @@
     ~/.tmux.conf: tmux.conf
     ~/.vim: vim
     ~/.vimrc: vimrc
-    # Poetry configuration goes into a different place on MacOS than Linux...
-    ~/.config/pypoetry/config.toml:
-      path: pypoetry_config.toml
-      if: '[[ "$(uname)" != "Darwin" ]]'
-    ~/Library/Application Support/pypoetry/config.toml:
-      path: pypoetry_config.toml
-      if: '[[ "$(uname)" == "Darwin" ]]'
     
 
 - shell:
