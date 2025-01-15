@@ -16,6 +16,21 @@ Host frodo
 Host bilbo
     HostName bilbo.int.monumo.com
     User tom
+Host merry
+    HostName merry.int.monumo.com
+    User tom
+Host pippin
+    HostName pippin.int.monumo.com
+    User tom
+Host sam
+    HostName sam.int.monumo.com
+    User tom
+Host lobelia
+    HostName lobelia.int.monumo.com
+    User tom
+Host camellia
+    HostName camellia.int.monumo.com
+    User tom
 Host arwen
     HostName arwen.int.monumo.com
     User tom
