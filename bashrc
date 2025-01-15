@@ -113,21 +113,6 @@ fcd() {
     local selected_dir=$(find . -type d 2>/dev/null | fzf) && cd "$selected_dir" || return 1
 }
 
-######################
-# Python development #
-######################
-
-# Initialise pyenv if it is available on the path.
-if _is_executable pyenv; then
-    eval "$(pyenv init -)"
-fi
-
-function pycheck() {
-    poetry run ruff format "$@"
-    poetry run ruff check --fix "$@"
-    poetry run pyright "$@"
-}
-
 
 #####################
 # Julia development #
