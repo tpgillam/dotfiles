@@ -68,6 +68,13 @@ vim.opt.relativenumber = false
 vim.cmd("digraph </ 10216") -- ⟨
 vim.cmd("digraph /> 10217") -- ⟩
 
+-- Register filetypes for extensions
+vim.filetype.add({
+    pattern = {
+        ['.*.jsonl'] = 'json',
+    },
+})
+
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)                                        -- Show explorer
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)                                       -- Show Lazy manager
