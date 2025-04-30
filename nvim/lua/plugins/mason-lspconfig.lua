@@ -22,7 +22,7 @@ return {
                 Lua = {
                     -- Load the neovim API, to avoid 'undefined global' errors.
                     workspace = {
-                        library = vim.api.nvim_get_runtime_file('lua', true),
+                        library = vim.api.nvim_get_runtime_file("", true),
                     },
                     telemetry = {
                         enable = false,
