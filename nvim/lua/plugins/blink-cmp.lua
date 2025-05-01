@@ -7,10 +7,15 @@ return {
 
     opts = {
         completion = {
-            accept = { auto_brackets = { enabled = false }, }, -- no auto brackets please thank you.
-            documentation = { auto_show = true },              -- Show documentation when showing menu.
+            accept = {
+                auto_brackets = { enabled = false }, -- no auto brackets please, thank you.
+            },
+            documentation = {
+                auto_show = true,       -- Show documentation when showing menu...
+                auto_show_delay_ms = 0, -- ... without lag.
+            },
             menu = {
-                auto_show = false,                             -- Don't show the completion menu unless triggered.
+                auto_show = false, -- Don't show the completion menu unless triggered.
 
                 -- A bit bit more information that the default
                 draw = {
