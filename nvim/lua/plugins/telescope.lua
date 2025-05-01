@@ -5,7 +5,7 @@ return {
     config = function()
         -- Use fzf-native with telescope
         local telescope = require("telescope")
-        telescope.load_extension('fzf')
+        telescope.load_extension("fzf")
 
         local builtin = require('telescope.builtin')
         local theme = require("telescope.themes").get_ivy()
