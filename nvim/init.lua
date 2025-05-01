@@ -41,6 +41,19 @@ end
 
 vim.api.nvim_create_user_command('Pyright', run_pyright_quickfix, {})
 
+-- Run the 'fix-all' ruff action if possible
+local function lsp_ruff_fix_all()
+    vim.lsp.buf.code_action({
+        apply  = true,
+        filter = function(action)
+            return action.title:match("Fix all auto%-fixable problems")
+        end,
+    })
+
+    -- format after fixing all
+    vim.lsp.buf.format({ async = true })
+end
+
 -- Options
 
 -- We have to enable `termguicolors` for certain colorschemes to work correctly
@@ -91,14 +104,16 @@ vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)                       
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)                                    -- Go to definition
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)                                -- Go to implementation
 vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)                                 -- Rename symbol
+-- NOTE: There are other LSP actions that we might want to map, e.g.
+--  - lsp.buf.signature_help
+--  - ...
 
 -- Jump to the definition of the _type_ of the variable under the cursor.
 vim.keymap.set("n", "<leader>D", require("telescope.builtin").lsp_type_definitions)
 
--- NOTE: There are other LSP actions that we might want to map, e.g.
---  - lsp.buf.signature_help
---  - lsp.buf.rename
---  - ...
+-- ruff fix all
+vim.keymap.set("n", "<Leader>rf", lsp_ruff_fix_all)
+
 
 vim.keymap.set("n", "<leader>rc", ":RuffCheck<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>py", ":Pyright<CR>", { noremap = true, silent = true })
