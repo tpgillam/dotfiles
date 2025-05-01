@@ -28,6 +28,10 @@ return {
             },
         },
 
+        -- Signature support is experimental, and the default keybinding (C-k) clashes
+        -- with insertion of digraphs.
+        signature = { enabled = false },
+
         -- Don't fall back to the lua implementation. Force me to fix it.
         fuzzy = { implementation = "rust" }
     },
