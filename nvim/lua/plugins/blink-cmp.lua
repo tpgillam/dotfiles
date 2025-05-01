@@ -6,7 +6,10 @@ return {
     version = '1.*',
 
     opts = {
-        keymap = { preset = 'enter' },
+        keymap = {
+            preset = 'enter',                   -- enter to complete, not C-y
+            ["<C-space>"] = { "show", "hide" }, -- toggle menu itself rather than docs
+        },
         completion = {
             accept = {
                 auto_brackets = { enabled = false }, -- no auto brackets please, thank you.
