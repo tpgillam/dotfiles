@@ -75,6 +75,11 @@ vim.filetype.add({
     },
 })
 
+-- Show LSP diagnostics after the line (the default was changed to false in NeoVim 0.11)
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)                                        -- Show explorer
 vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)                                       -- Show Lazy manager
