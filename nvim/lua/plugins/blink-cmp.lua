@@ -6,6 +6,7 @@ return {
     version = '1.*',
 
     opts = {
+        keymap = { preset = 'enter' },
         completion = {
             accept = {
                 auto_brackets = { enabled = false }, -- no auto brackets please, thank you.
@@ -13,6 +14,11 @@ return {
             documentation = {
                 auto_show = true,       -- Show documentation when showing menu...
                 auto_show_delay_ms = 0, -- ... without lag.
+            },
+            list = {
+                selection = {
+                    preselect = false,
+                },
             },
             menu = {
                 auto_show = false, -- Don't show the completion menu unless triggered.
