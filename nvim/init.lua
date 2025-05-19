@@ -49,9 +49,6 @@ local function lsp_ruff_fix_all()
             return action.title:match("Fix all auto%-fixable problems")
         end,
     })
-
-    -- format after fixing all
-    vim.lsp.buf.format({ async = true })
 end
 
 -- Options
