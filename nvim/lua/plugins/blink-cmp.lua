@@ -41,6 +41,9 @@ return {
         -- with insertion of digraphs.
         signature = { enabled = false },
 
+        -- cmdline completion (currently) seems more frustrating to use than the default
+        cmdline = { enabled = false },
+
         -- Don't fall back to the lua implementation. Force me to fix it.
         fuzzy = { implementation = "rust" }
     },
