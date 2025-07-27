@@ -1,7 +1,8 @@
 return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
-        "mason-org/mason.nvim",
+        -- Adding `opt = {}` ensures that the plugin has setup() called
+        { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
     },
     opts = {
