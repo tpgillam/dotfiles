@@ -90,17 +90,40 @@ vim.diagnostic.config({
     virtual_text = true,
 })
 
--- Keymappings
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)                                                      -- Show explorer
-vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)                                                     -- Show Lazy manager
 
-vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float { border = "rounded" } end)  -- See more about diagnostics
-vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end)               -- Autoformat with LSP
-vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end)                  -- LSP hover action
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)                                          -- LSP code action
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)                                                  -- Go to definition
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation)                                              -- Go to implementation
-vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)                                               -- Rename symbol
+-- Additional LSP configuration
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            -- Load the neovim API, to avoid 'undefined global' errors.
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+                enable = false,
+            }
+        }
+    }
+}
+)
+-- The options here will use `pyright` and `ruff` versions that are on the
+-- current PATH; I'm happy to assume that I'll always be working in the context
+-- of a uv-managed environment.
+vim.lsp.config("ruff", { cmd = { "uv", "run", "ruff", "server" } })
+vim.lsp.config("pyright", { cmd = { "uv", "run", "pyright-langserver", "--stdio" } })
+
+
+-- Keymappings
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)                                                     -- Show explorer
+vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)                                                    -- Show Lazy manager
+
+vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float { border = "rounded" } end) -- See more about diagnostics
+vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end)              -- Autoformat with LSP
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end)                 -- LSP hover action
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)                                         -- LSP code action
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)                                                 -- Go to definition
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)                                             -- Go to implementation
+vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)                                              -- Rename symbol
 -- NOTE: There are other LSP actions that we might want to map, e.g.
 --  - lsp.buf.signature_help
 --  - ...
