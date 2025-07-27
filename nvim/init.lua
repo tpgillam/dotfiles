@@ -114,16 +114,16 @@ vim.lsp.config("pyright", { cmd = { "uv", "run", "pyright-langserver", "--stdio"
 
 
 -- Keymappings
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)                                                     -- Show explorer
-vim.keymap.set("n", "<leader>l", vim.cmd.Lazy)                                                    -- Show Lazy manager
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
+vim.keymap.set("n", "<leader>l", vim.cmd.Lazy) -- Show Lazy manager
 
-vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float { border = "rounded" } end) -- See more about diagnostics
-vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end)              -- Autoformat with LSP
-vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end)                 -- LSP hover action
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)                                         -- LSP code action
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)                                                 -- Go to definition
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation)                                             -- Go to implementation
-vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)                                              -- Rename symbol
+vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float { border = "rounded" } end)
+vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end)
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = "rounded" } end)
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+vim.keymap.set("n", "<leader>c", vim.lsp.buf.rename)
 -- NOTE: There are other LSP actions that we might want to map, e.g.
 --  - lsp.buf.signature_help
 --  - ...
