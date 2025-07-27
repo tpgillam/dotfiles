@@ -13,8 +13,6 @@ return {
         ensure_installed = {
             "julials",
             "lua_ls",
-            "ruff",
-            "pyright",
             "taplo"
         }
     },

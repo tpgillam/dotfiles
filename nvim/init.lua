@@ -111,7 +111,9 @@ vim.lsp.config("lua_ls", {
 -- of a uv-managed environment.
 vim.lsp.config("ruff", { cmd = { "uv", "run", "ruff", "server" } })
 vim.lsp.config("pyright", { cmd = { "uv", "run", "pyright-langserver", "--stdio" } })
-
+-- They are also not managed by Mason, so enable them explicitly.
+vim.lsp.enable("ruff")
+vim.lsp.enable("pyright")
 
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
