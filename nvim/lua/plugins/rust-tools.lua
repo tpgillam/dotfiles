@@ -7,7 +7,7 @@ return {
         rt.setup({
             server = {
                 on_attach = function(_, bufnr)
-                    opts = { buffer = bufnr }
+                    local opts = { buffer = bufnr }
                     -- Hover actions
                     vim.keymap.set("n", "K", rt.hover_actions.hover_actions, opts)
                     -- Code action groups
