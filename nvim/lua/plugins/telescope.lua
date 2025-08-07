@@ -15,12 +15,15 @@ return {
         vim.keymap.set('n', '<C-p>', function() builtin.git_files(theme) end, {})
         vim.keymap.set('n', '<leader>th', function() builtin.colorscheme(theme) end, {})
 
-        -- Enable showing hidden files (dotfiles & those in .gitignore) in file finder.
         telescope.setup {
             pickers = {
                 find_files = {
+                    -- Enable showing hidden files (dotfiles & those in .gitignore) in file finder.
                     hidden = true,
                     no_ignore = true
+                },
+                git_files = {
+                    file_ignore_patterns = { "^archived_.*/" },
                 }
             },
             defaults = {
@@ -35,7 +38,7 @@ return {
                     -- Custom arguments follow!
                     -- Also search hidden files and folders, except `.git`.
                     "--hidden",
-                    "--glob", "!.git/**",
+                    "--glob", "!{.git/**,archived_*}",
                 }
             }
         }
