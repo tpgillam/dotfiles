@@ -106,11 +106,27 @@ vim.lsp.config("lua_ls", {
     }
 }
 )
--- The options here will use `pyright` and `ruff` versions that are on the
--- current PATH; I'm happy to assume that I'll always be working in the context
+-- The options here will use `pyright` and `ruff` versions that are in the
+-- project root; I'm happy to assume that I'll always be working in the context
 -- of a uv-managed environment.
-vim.lsp.config("ruff", { cmd = { "uv", "run", "ruff", "server" } })
-vim.lsp.config("pyright", { cmd = { "uv", "run", "pyright-langserver", "--stdio" } })
+vim.lsp.config("ruff", {
+    cmd = function(dispatchers, config)
+        return vim.lsp.rpc.start(
+            { "uv", "run", "ruff", "server" },
+            dispatchers,
+            { cwd = config.root_dir, env = config.cmd_env }
+        )
+    end,
+})
+vim.lsp.config("pyright", {
+    cmd = function(dispatchers, config)
+        return vim.lsp.rpc.start(
+            { "uv", "run", "pyright-langserver", "--stdio" },
+            dispatchers,
+            { cwd = config.root_dir, env = config.cmd_env }
+        )
+    end,
+})
 -- They are also not managed by Mason, so enable them explicitly.
 vim.lsp.enable("ruff")
 vim.lsp.enable("pyright")
