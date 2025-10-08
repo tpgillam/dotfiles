@@ -57,7 +57,7 @@ end
 vim.opt.termguicolors = true
 
 -- Choose the colorscheme
-vim.cmd.colorscheme("nightfox")
+vim.cmd.colorscheme("melange")
 
 -- No mouse support, please.
 -- Among other things it hijacks selection - in WSL2 makes it impossible to
