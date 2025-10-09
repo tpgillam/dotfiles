@@ -17,4 +17,5 @@ return {
         name = "catppuccin",
         opts = { no_italic = true }
     },
+    { "vague-theme/vague.nvim" },
 }
