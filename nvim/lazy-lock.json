@@ -6,6 +6,7 @@
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "1ee5c1fd068c81f9dd06483e639c2aa4587dc197" },
   "jellybeans-nvim": { "branch": "main", "commit": "d5989265b5256cb296b5772c73e57490e84f69b1" },
+  "kanagawa-paper.nvim": { "branch": "master", "commit": "b0c4d7ce2d3671ff3188030e585cc0c0a7b5e3a3" },
   "lazy.nvim": { "branch": "main", "commit": "4ded3ff73bf42e1c657e5deb85d8bbd887d0172e" },
   "lush.nvim": { "branch": "main", "commit": "9c60ec2279d62487d942ce095e49006af28eed6e" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "6bdb14f230de0904229ec367b410fb817e59b072" },

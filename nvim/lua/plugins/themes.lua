@@ -18,4 +18,5 @@ return {
         opts = { no_italic = true }
     },
     { "vague-theme/vague.nvim" },
+    { "thesimonho/kanagawa-paper.nvim" },
 }
