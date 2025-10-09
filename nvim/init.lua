@@ -84,6 +84,14 @@ vim.filetype.add({
         ['.*.jsonl'] = 'json',
     },
 })
+-- Snippet adapted from `:help zip` to register python ".whl" archives
+-- to be viewed with the zip archive viewer.
+vim.api.nvim_create_autocmd("BufReadCmd", {
+    pattern = { "*.whl" },
+    callback = function()
+        vim.fn["zip#Browse"](vim.fn.expand("<amatch>"))
+    end,
+})
 
 -- Show LSP diagnostics after the line (the default was changed to false in NeoVim 0.11)
 vim.diagnostic.config({
