@@ -12,4 +12,11 @@ return {
     { "savq/melange-nvim" },
     { "EdenEast/nightfox.nvim" },
     { "romainl/Apprentice" },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        opts = { no_italic = true }
+    },
+    { "vague-theme/vague.nvim" },
+    { "thesimonho/kanagawa-paper.nvim" },
 }
