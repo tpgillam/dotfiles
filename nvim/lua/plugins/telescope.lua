@@ -14,7 +14,8 @@ return {
         vim.keymap.set('n', '<leader>ps', function() builtin.grep_string(theme) end, {})
         vim.keymap.set('n', '<leader>pc', function() builtin.git_bcommits(theme) end, {})
         vim.keymap.set('n', '<leader>pb', function() builtin.buffers(theme) end, {})
-        vim.keymap.set('n', '<leader>sm', function() builtin.man_pages(theme) end, {})
+        vim.keymap.set('n', '<leader>sm', function() builtin.man_pages({ theme, sections = { "ALL" } }) end,
+            {})
         vim.keymap.set('n', '<C-p>', function() builtin.git_files(theme) end, {})
         vim.keymap.set('n', '<leader>th', function() builtin.colorscheme(theme) end, {})
 
