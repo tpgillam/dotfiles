@@ -138,6 +138,7 @@ vim.lsp.config("pyright", {
 -- They are also not managed by Mason, so enable them explicitly.
 vim.lsp.enable("ruff")
 vim.lsp.enable("pyright")
+vim.lsp.enable("rust_analyzer")
 
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
