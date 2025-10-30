@@ -135,7 +135,15 @@ vim.lsp.config("pyright", {
         )
     end,
 })
--- They are also not managed by Mason, so enable them explicitly.
+vim.lsp.config("rust_analyzer", {
+    settings = {
+        ["rust-analyzer"] = {
+            check = { command = "clippy" }
+        }
+    }
+})
+
+-- These LSPs are also not managed by Mason, so enable them explicitly.
 vim.lsp.enable("ruff")
 vim.lsp.enable("pyright")
 vim.lsp.enable("rust_analyzer")
