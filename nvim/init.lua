@@ -100,11 +100,19 @@ vim.diagnostic.config({
 
 
 -- Detect whether a command is available via `uv run`
-local function have_env_command(command, root_dir, env)
+local function _have_env_command(command, root_dir, env)
     local res = vim.system(
         { "uv", "run", "which", "-s", command },
         { cwd = root_dir, env = env, text = true }
     ):wait()
+    return res.code == 0
+end
+
+-- Return true iff the file at `path` is a PEP723 script
+local function _is_pep723_script(path)
+    -- If `uv tree` succeeds on the script, then it is pep723 compliant.
+    -- Otherwise, it is not.
+    local res = vim.system({ "uv", "tree", "--depth", "0", "--script", path }):wait()
     return res.code == 0
 end
 
@@ -128,7 +136,7 @@ vim.lsp.config("lua_ls", {
 -- of a uv-managed environment.
 vim.lsp.config("ruff", {
     cmd = function(dispatchers, config)
-        local installed = have_env_command("ruff", config.root_dir, config.cmd_env)
+        local installed = _have_env_command("ruff", config.root_dir, config.cmd_env)
         local cmd
         if installed then
             cmd = { "uv", "run", "ruff", "server" }
@@ -145,12 +153,22 @@ vim.lsp.config("ruff", {
 })
 vim.lsp.config("pyright", {
     cmd = function(dispatchers, config)
-        local installed = have_env_command("pyright-langserver", config.root_dir, config.cmd_env)
+        local path = vim.api.nvim_buf_get_name(0)
+        local is_script = _is_pep723_script(path)
+        local installed = _have_env_command("pyright-langserver", config.root_dir, config.cmd_env)
         local cmd
         if installed then
-            cmd = { "uv", "run", "pyright-langserver", "--stdio" }
+            if is_script then
+                cmd = { "uv", "run", "--with-requirements", path, "pyright-langserver", "--stdio" }
+            else
+                cmd = { "uv", "run", "pyright-langserver", "--stdio" }
+            end
         else
-            cmd = { "uvx", "--from", "pyright[nodejs]", "pyright-langserver", "--stdio" }
+            if is_script then
+                cmd = { "uvx", "--with-requirements", path, "--from", "pyright[nodejs]", "pyright-langserver", "--stdio" }
+            else
+                cmd = { "uvx", "--from", "pyright[nodejs]", "pyright-langserver", "--stdio" }
+            end
         end
 
         return vim.lsp.rpc.start(
