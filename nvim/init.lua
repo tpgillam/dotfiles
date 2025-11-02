@@ -102,13 +102,10 @@ vim.diagnostic.config({
 -- Detect whether a command is available via `uv run`
 local function have_env_command(command, root_dir, env)
     local res = vim.system(
-        { "uv", "run", "which", command },
+        { "uv", "run", "which", "-s", command },
         { cwd = root_dir, env = env, text = true }
     ):wait()
-    if not res or res.code ~= 0 then
-        return false
-    end
-    return res.stdout and #vim.trim(res.stdout) > 0
+    return res.code == 0
 end
 
 -- Additional LSP configuration
@@ -131,13 +128,11 @@ vim.lsp.config("lua_ls", {
 -- of a uv-managed environment.
 vim.lsp.config("ruff", {
     cmd = function(dispatchers, config)
-        local ruff_installed = have_env_command("ruff", config.root_dir, config.cmd_env)
+        local installed = have_env_command("ruff", config.root_dir, config.cmd_env)
         local cmd
-        if ruff_installed then
+        if installed then
             cmd = { "uv", "run", "ruff", "server" }
         else
-            -- We can't run ruff from a local project. Fall back to trying a
-            -- globally installed ruff. This is handy for one-off scripts.
             cmd = { "uvx", "ruff", "server" }
         end
 
@@ -150,8 +145,16 @@ vim.lsp.config("ruff", {
 })
 vim.lsp.config("pyright", {
     cmd = function(dispatchers, config)
+        local installed = have_env_command("pyright-langserver", config.root_dir, config.cmd_env)
+        local cmd
+        if installed then
+            cmd = { "uv", "run", "pyright-langserver", "--stdio" }
+        else
+            cmd = { "uvx", "--from", "pyright[nodejs]", "pyright-langserver", "--stdio" }
+        end
+
         return vim.lsp.rpc.start(
-            { "uv", "run", "pyright-langserver", "--stdio" },
+            cmd,
             dispatchers,
             { cwd = config.root_dir, env = config.cmd_env }
         )
