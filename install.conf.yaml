@@ -11,6 +11,12 @@
     ~/.config/karabiner/karabiner.json: 
       path: karabiner.json
       if: '[[ "$(uname)" == "Darwin" ]]'  # MacOS only
+    ~/.config/hypr:
+      path: hypr
+      if: '[[ "$(uname)" == "Linux" ]]'
+    ~/.config/waybar:
+      path: waybar
+      if: '[[ "$(uname)" == "Linux" ]]'
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS

@@ -1,0 +1,10 @@
+@import url("file:///etc/xdg/waybar/style.css");
+
+* {
+    font-family: 'JuliaMono Nerd Font Mono';
+    font-size: 14px;
+}
+
+#workspaces button.active {
+    background-color: #145727;
+}
