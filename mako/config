@@ -1,27 +1,21 @@
-sort=-time
-layer=overlay
-background-color=#2e3440
-width=300
-height=110
-border-size=2
-border-color=#88c0d0
-border-radius=15
-icons=0
-max-icon-size=64
-default-timeout=5000
-ignore-timeout=1
-font=monospace 14
+anchor=top-right
+background-color=#1f1f28
+text-color=#dcd7ba
+max-icon-size=96
+border-size=3
+border-radius=3
+default-timeout=6000
+font=sans-serif 14px
+outer-margin=10
+padding=8,10
 
 [urgency=low]
-border-color=#cccccc
+border-color=#00ff9955
 
 [urgency=normal]
-border-color=#d08770
+border-color=#33ccffee
 
 [urgency=critical]
 border-color=#bf616a
 default-timeout=0
 
-[category=mpd]
-default-timeout=2000
-group-by=category
