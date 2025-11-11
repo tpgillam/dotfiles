@@ -11,7 +11,6 @@ return {
     },
     { "savq/melange-nvim" },
     { "EdenEast/nightfox.nvim" },
-    { "romainl/Apprentice" },
     {
         "catppuccin/nvim",
         name = "catppuccin",
