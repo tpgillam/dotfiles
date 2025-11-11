@@ -17,6 +17,9 @@
     ~/.config/waybar:
       path: waybar
       if: '[[ "$(uname)" == "Linux" ]]'
+    ~/.config/mako:
+      path: mako
+      if: '[[ "$(uname)" == "Linux" ]]'
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
