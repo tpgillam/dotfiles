@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "clock"],
+    "modules-right": ["pulseaudio#microphone", "pulseaudio", "clock"],
     "hyprland/workspaces": {
         "persistent-workspaces": {
             "*": 4
@@ -13,8 +13,20 @@
          "max-length": 50,
          "swap-icon-label": false  // suppress warning
     },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-right": "alacritty --title wiremix -e wiremix -v input",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+        "scroll-step": 5,
+        "tooltip-format": "Mic Level: {volume}%"
+    },
     "pulseaudio": {
-        "on-click": "alacritty -e wiremix"
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "alacritty --title wiremix -e wiremix -v output"
     },
     "clock": {
          "format": "{:%A, %Y-%m-%d %H:%M}"

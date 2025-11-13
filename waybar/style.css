@@ -2,9 +2,21 @@
 
 * {
     font-family: 'JuliaMono Nerd Font Mono';
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 #workspaces button.active {
     background-color: #145727;
+}
+
+/* Match the default style of `pulseaudio`, but toggle the colour
+ * based on source muted state, rather than sink muted state. */
+#pulseaudio.microphone {
+    background-color: #f1c40f;
+    color: #000000;
+}
+#pulseaudio.microphone.source-muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
 }
