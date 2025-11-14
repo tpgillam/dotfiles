@@ -14,11 +14,14 @@
     ~/.config/hypr:
       path: hypr
       if: '[[ "$(uname)" == "Linux" ]]'
+    ~/.config/mako:
+      path: mako
+      if: '[[ "$(uname)" == "Linux" ]]'
     ~/.config/waybar:
       path: waybar
       if: '[[ "$(uname)" == "Linux" ]]'
-    ~/.config/mako:
-      path: mako
+    ~/.config/wofi:
+      path: wofi
       if: '[[ "$(uname)" == "Linux" ]]'
     ~/.config/nvim: nvim
     ~/.JuliaFormatter.toml: JuliaFormatter.toml

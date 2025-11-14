@@ -1,0 +1,10 @@
+allow_images=true
+allow_markup=false
+
+# 'actions' aren't navigable with keyboard, so disable
+# them entirely
+no_actions=true
+
+normal_window=true
+width=25%
+height=25%
