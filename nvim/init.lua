@@ -167,7 +167,9 @@ vim.lsp.config("pyright", {
             if is_script then
                 cmd = { "uvx", "--with-requirements", path, "--from", "pyright[nodejs]", "pyright-langserver", "--stdio" }
             else
-                cmd = { "uvx", "--from", "pyright[nodejs]", "pyright-langserver", "--stdio" }
+                -- We use 'run --with' so that we include the project's dependencies in the environment
+                -- in which pyright runs. This is needed for it to perform analysis properly.
+                cmd = { "uv", "run", "--with", "pyright[nodejs]", "pyright-langserver", "--stdio" }
             end
         end
 
