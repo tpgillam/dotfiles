@@ -24,7 +24,6 @@
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
     ~/.bashrc: bashrc
-    ~/.cargo/config.toml: cargo/config.toml
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.julia/config/startup.jl: startup.jl
