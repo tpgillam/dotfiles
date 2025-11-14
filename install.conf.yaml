@@ -32,20 +32,20 @@
     ~/.julia/config/startup.jl: startup.jl
     ~/.ssh/config: ssh_config
     ~/.tmux.conf: tmux.conf
-    ~/.vim: vim
-    ~/.vimrc: vimrc
+    # ~/.vim: vim
+    # ~/.vimrc: vimrc
     
 
 - shell:
   # Update all git submodules (including the dotbot module)
   - [git submodule update --init --recursive, Installing submodules]
 
-  # Set up Vundle & plugins.
-  - dir="$HOME/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
-  # Note - we are avoiding chicken-and-egg errors in the vimrc.
-  # there _will_ be errors when we load the vimrc, but by loading the vimrc later
-  # we manage to actually install the plugins in this step.
-  - [command vim --clean '+source ~/.vimrc' +PluginInstall +qall]
+  # # Set up Vundle & plugins.
+  # - dir="$HOME/.vim/bundle/Vundle.vim"; if [ ! -d $dir ]; then git clone https://github.com/gmarik/Vundle.vim.git $dir; fi
+  # # Note - we are avoiding chicken-and-egg errors in the vimrc.
+  # # there _will_ be errors when we load the vimrc, but by loading the vimrc later
+  # # we manage to actually install the plugins in this step.
+  # - [command vim --clean '+source ~/.vimrc' +PluginInstall +qall]
     
   # Neovim: Lazy.nvim 'restore' will ensure the state of neovim matches the lock file
   # in this repo.
