@@ -100,10 +100,10 @@ vim.diagnostic.config({
 
 
 -- Detect whether a command is available via `uv run`
-local function _have_env_command(command, root_dir, env)
+local function _have_uv_run_command(command, root_dir)
     local res = vim.system(
         { "uv", "run", "which", "-s", command },
-        { cwd = root_dir, env = env, text = true }
+        { cwd = root_dir, text = true }
     ):wait()
     return res.code == 0
 end
@@ -136,7 +136,7 @@ vim.lsp.config("lua_ls", {
 -- of a uv-managed environment.
 vim.lsp.config("ruff", {
     cmd = function(dispatchers, config)
-        local installed = _have_env_command("ruff", config.root_dir, config.cmd_env)
+        local installed = _have_uv_run_command("ruff", config.root_dir)
         local cmd
         if installed then
             cmd = { "uv", "run", "ruff", "server" }
@@ -152,10 +152,21 @@ vim.lsp.config("ruff", {
     end,
 })
 vim.lsp.config("pyright", {
+    root_dir = function(bufnr, on_dir)
+        -- Perform the 'default' lookup mechanism for `root_dir`.
+        local root_tmp = vim.fs.root(bufnr, vim.lsp.config["ty"].root_markers)
+        local ty_installed = _have_uv_run_command("ty", root_tmp);
+        if not ty_installed then
+            -- For now, run the pyright language server iff ty is not explicitly installed.
+            -- NOTE: this logic is complementary to that in `ty` LS setup to ensure
+            --  exactly one of the two is run.
+            on_dir(root_tmp)
+        end
+    end,
     cmd = function(dispatchers, config)
         local path = vim.api.nvim_buf_get_name(0)
         local is_script = _is_pep723_script(path)
-        local installed = _have_env_command("pyright-langserver", config.root_dir, config.cmd_env)
+        local installed = _have_uv_run_command("pyright-langserver", config.root_dir)
         local cmd
         if installed then
             if is_script then
@@ -180,6 +191,26 @@ vim.lsp.config("pyright", {
         )
     end,
 })
+vim.lsp.config("ty", {
+    root_dir = function(bufnr, on_dir)
+        -- Perform the 'default' lookup mechanism for `root_dir`.
+        local root_tmp = vim.fs.root(bufnr, vim.lsp.config["ty"].root_markers)
+        local ty_installed = _have_uv_run_command("ty", root_tmp);
+        if ty_installed then
+            -- For now, run the ty language server iff ty is explicitly installed.
+            -- NOTE: this logic is complementary to that in `pyright` LS setup to ensure
+            --  exactly one of the two is run.
+            on_dir(root_tmp)
+        end
+    end,
+    cmd = function(dispatchers, config)
+        return vim.lsp.rpc.start(
+            { "uv", "run", "ty", "server" },
+            dispatchers,
+            { cwd = config.root_dir, env = config.cmd_env }
+        )
+    end,
+})
 vim.lsp.config("rust_analyzer", {
     settings = {
         ["rust-analyzer"] = {
@@ -191,6 +222,7 @@ vim.lsp.config("rust_analyzer", {
 -- These LSPs are also not managed by Mason, so enable them explicitly.
 vim.lsp.enable("ruff")
 vim.lsp.enable("pyright")
+vim.lsp.enable("ty")
 vim.lsp.enable("rust_analyzer")
 
 -- Keymappings
