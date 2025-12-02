@@ -224,6 +224,7 @@ vim.lsp.enable("ruff")
 vim.lsp.enable("pyright")
 vim.lsp.enable("ty")
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("zls")
 
 -- Keymappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)  -- Show explorer
