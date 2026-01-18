@@ -23,19 +23,6 @@ yellow = "#f6c744"
 background = "#101421"
 foreground = "#fffbf6"
 
-# NOTE: 2026-01-18 previously the following was required; but it seems to prevent
-#   undercurl from working properly in tmux. Removing it helps, following:
-#       https://www.lorenzobettini.it/2025/10/configure-tmux-to-support-true-color-and-italics-in-alacritty-and-neovim/
-# [env]
-# # This seems to be required to get colours rendering properly
-# # within tmux. See some discussion here:
-# #   https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
-# #   https://github.com/tmux/tmux/issues/696
-# #
-# # The other changes suggested to tmux.conf in that second link were not
-# # necessary after changing this.
-# TERM = "xterm-256color"
-
 [font]
 size = 12.0
 
@@ -51,7 +38,7 @@ family = "JuliaMono Nerd Font Mono"
 # key_bindings:
 #   # Allow sending Ctrl-Space to the terminal
 #   - { key: Space, mods: Control, chars: "\x00" }
-    
+
 
 # Settings that (used to be) needed on MacOS, but not any more
 
@@ -66,3 +53,15 @@ family = "JuliaMono Nerd Font Mono"
 #   Typing "#" now seems to work out-of-the-box in any case.
 # alt_send_esc: false
 
+# NOTE: 2026-01-18 previously the following was required; but it seems to prevent
+#   undercurl from working properly in tmux. Removing it helps, following:
+#       https://www.lorenzobettini.it/2025/10/configure-tmux-to-support-true-color-and-italics-in-alacritty-and-neovim/
+# [env]
+# # This seems to be required to get colours rendering properly
+# # within tmux. See some discussion here:
+# #   https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
+# #   https://github.com/tmux/tmux/issues/696
+# #
+# # The other changes suggested to tmux.conf in that second link were not
+# # necessary after changing this.
+# TERM = "xterm-256color"
