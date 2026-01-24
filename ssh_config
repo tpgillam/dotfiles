@@ -31,6 +31,15 @@ Host lobelia
 Host camellia
     HostName camellia.int.monumo.com
     User tom
+Host tobold
+    HostName tobold.int.monumo.com
+    User tom
+Host hamfast
+    HostName hamfast.int.monumo.com
+    User tom
+Host deagol
+    HostName deagol.int.monumo.com
+    User tom
 Host arwen
     HostName arwen.int.monumo.com
     User tom
