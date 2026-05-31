@@ -11,6 +11,7 @@ The following should be installed before starting:
 - tmux
 - neovim
 - ripgrep
+- tree-sitter, and C compiler
 
 ### Suggested dependencies
 
