@@ -59,6 +59,10 @@ vim.opt.termguicolors = true
 -- Choose the colorscheme
 vim.cmd.colorscheme("melange")
 
+-- Use one global statusline rather than a statusline in every window.
+-- This also prevents floating windows from acquiring their own statusline.
+vim.opt.laststatus = 3
+
 -- No mouse support, please.
 -- Among other things it hijacks selection - in WSL2 makes it impossible to
 -- select and copy text into the windows buffer.
