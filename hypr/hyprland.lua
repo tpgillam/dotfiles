@@ -218,19 +218,24 @@ hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
+-- Move `delta` workspaces right, capped to the ends.
+local function step(delta)
+    return math.max(1, math.min(hl.get_active_workspace().id + delta, numWorkspaces))
+end
+
 -- Switch workspaces
 for i = 1, numWorkspaces do
     hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 end
-hl.bind(mainMod .. " + left", hl.dsp.focus({ workspace = "m-1" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mainMod .. " + left", function() hl.dispatch(hl.dsp.focus({ workspace = step(-1) })) end)
+hl.bind(mainMod .. " + right", function() hl.dispatch(hl.dsp.focus({ workspace = step(1) })) end)
 
 -- Move active window to a workspace
 for i = 1, numWorkspaces do
     hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "m-1" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "m+1" }))
+hl.bind(mainMod .. " + SHIFT + left", function() hl.dispatch(hl.dsp.window.move({ workspace = step(-1) })) end)
+hl.bind(mainMod .. " + SHIFT + right", function() hl.dispatch(hl.dsp.window.move({ workspace = step(1) })) end)
 
 -- Screenshot
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
