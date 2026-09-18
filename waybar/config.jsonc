@@ -5,7 +5,7 @@
     "modules-right": ["pulseaudio#microphone", "pulseaudio", "clock"],
     "hyprland/workspaces": {
         "persistent-workspaces": {
-            "*": 4
+            "*": [1, 2, 3, 4]
         }
     },
     "hyprland/window": {

@@ -26,6 +26,9 @@ hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" 
 -- Set programs that you use
 local terminal = "alacritty --command bash -l"
 
+-- Number of workspaces; keep in sync with persistent-workspaces in waybar/config.jsonc
+local numWorkspaces = 4
+
 -----------------
 --- AUTOSTART ---
 -----------------
@@ -120,6 +123,10 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "a
 hl.animation({ leaf = "workspaces", enabled = true, speed = 2.00, bezier = "almostLinear", style = "slide" })
 
 -- Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
+for i = 1, numWorkspaces do
+    hl.workspace_rule({ workspace = tostring(i), persistent = true })
+end
+
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
 -- workspace = w[tv1], gapsout:0, gapsin:0
@@ -212,20 +219,18 @@ hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + Z", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 -- Switch workspaces
-for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+for i = 1, numWorkspaces do
+    hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 end
-hl.bind(mainMod .. " + left", hl.dsp.focus({ workspace = "-1" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ workspace = "+1" }))
+hl.bind(mainMod .. " + left", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ workspace = "m+1" }))
 
 -- Move active window to a workspace
-for i = 1, 10 do
-    local key = i % 10
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+for i = 1, numWorkspaces do
+    hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "-1" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "+1" }))
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ workspace = "m+1" }))
 
 -- Screenshot
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
