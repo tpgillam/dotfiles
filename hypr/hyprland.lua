@@ -14,7 +14,8 @@
 ------------------
 
 -- See https://wiki.hyprland.org/Configuring/Monitors/
-hl.monitor({ output = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. AORUS AD27QD 19280B000621", mode = "2560x1440@144", position = "auto", scale = 1 })
+local mainMonitor = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. AORUS AD27QD 19280B000621"
+hl.monitor({ output = mainMonitor, mode = "2560x1440@144", position = "auto", scale = 1 })
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
 
 -------------------
@@ -126,6 +127,10 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 2.00, bezier = "almo
 for i = 1, numWorkspaces do
     hl.workspace_rule({ workspace = tostring(i), persistent = true })
 end
+
+-- Specify a default workspace; this is used if mainMonitor is powered off. Without
+-- this line, a workspace large than `numWorkspaces` may be selected.
+hl.workspace_rule({ workspace = "1", monitor = mainMonitor, default = true })
 
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
