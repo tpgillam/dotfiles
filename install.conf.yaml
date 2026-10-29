@@ -27,6 +27,7 @@
     ~/.JuliaFormatter.toml: JuliaFormatter.toml
     ~/.LS_COLORS: LS_COLORS
     ~/.bashrc: bashrc
+    ~/.claude/settings.json: claude_settings.json
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.julia/config/startup.jl: startup.jl
