@@ -4,5 +4,6 @@
   "effortLevel": "medium",
   "promptSuggestionEnabled": false,
   "tui": "fullscreen",
-  "timeFormat": "24-hour"
+  "timeFormat": "24-hour",
+  "theme": "auto"
 }
